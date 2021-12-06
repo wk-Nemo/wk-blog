@@ -1,7 +1,15 @@
 <template>
-  <div>blog</div>
+  <my-message></my-message>
+  <router-view></router-view>
 </template>
 
-<style>
+<script>
+import MyMessage from '@/views/my-message'
 
-</style>
+export default {
+  name: 'app',
+  components: {
+    MyMessage
+  }
+}
+</script>
