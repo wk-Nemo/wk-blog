@@ -29,8 +29,17 @@ footer, header, menu, nav, section {
   display: block;
 }
 
+html {
+  display: block;
+  height: 100%;
+  font-size: 15.8px;
+}
+
 body {
   line-height: 1;
+  background: $color-background;
+  height: 100%;
+  font-family: 'Josefin Sans','PingFang SC';
 }
 
 blockquote, q {
