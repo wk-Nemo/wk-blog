@@ -21,7 +21,7 @@
           <span class="item-name">{{item.name}}</span>
         </router-link>
       </div>
-      <div class="direction">
+      <!-- <div class="direction">
         <a
           v-for="(item, index) in directions"
           :key="index"
@@ -29,7 +29,7 @@
           class="direction-item"
           :class="{'direction-selected-item': item.name === selectedDirection}"
         >{{item.name}}</a>
-      </div>
+      </div> -->
     </div>
   </div>
 </template>
@@ -56,18 +56,7 @@ export default {
           path: '/tags'
         }
       ],
-      selectedOption: '归档',
-      directions: [
-        {
-          name: 'Home',
-          path: ''
-        },
-        {
-          name: 'About',
-          path: ''
-        }
-      ],
-      selectedDirection: 'Home'
+      selectedOption: ''
     }
   },
   methods: {
@@ -80,17 +69,16 @@ export default {
 
 <style lang="scss" scoped>
 .my-message {
-  position: fixed;
+  /* position: fixed;
   left: 0;
-  top: 0;
+  top: 42rem;
   bottom: 0;
+  height: 100%; */
   border-right: 1px solid $color-border;
-  height: 100%;
   .my-message-content {
     position: relative;
     margin-right: -1rem;
     padding-right: 1rem;
-    height: 100%;
     width: 280px;
   }
 }
@@ -177,7 +165,7 @@ export default {
   }
 }
 
-.direction {
+/* .direction {
   margin: 2rem 0 3rem;
   font-family: "Baloo Bhaijaan", "Josefin Sans", "PingFang SC";
   .direction-item {
@@ -210,5 +198,5 @@ export default {
   .direction-selected-item::after {
     background-color: rgb(42, 43, 51);
   }
-}
+} */
 </style>

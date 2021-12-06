@@ -1,0 +1,67 @@
+<template>
+  <div class="header">
+    <div class="header-banner">
+      <div class="header-banner-info">
+        <div class="header-banner-info-title">
+          TortoiseWu's Blog
+        </div>
+        <div class="header-banner-info-subtitle">
+          认真做好每一件事
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'header'
+}
+</script>
+
+<style lang="scss" scoped>
+.header {
+  width: 100%;
+  font-size: 18px;
+  background-color: #2d2e30;
+  height: 45rem;
+  .header-banner {
+    position: relative;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+    background: url(https://liuyib.github.io/assets/banner/1.jpg) no-repeat center/cover;
+    .header-banner-info {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 100%;
+      text-align: center;
+      transform: translateY(-50%);
+      .header-banner-info-title {
+        margin-bottom: 2rem;
+        font-size: 4rem;
+        font-weight: 700;
+        line-height: 1;
+        color: #f5f6f7;
+      }
+      .header-banner-info-subtitle {
+        font-size: 1.2rem;
+        font-weight: 400;
+        color: #f5f6f7;
+      }
+    }
+  }
+  .header-banner::before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+  }
+}
+</style>

@@ -1,22 +1,19 @@
 <template>
-  <my-message></my-message>
-  <router-view></router-view>
+  <div>
+    <Header></Header>
+    <Home></Home>
+  </div>
 </template>
 
 <script>
-import MyMessage from '@/views/my-message'
+import Header from '@/views/header'
+import Home from '@/views/home'
 
 export default {
   name: 'app',
   components: {
-    MyMessage
+    Header,
+    Home
   }
 }
 </script>
-
-<style lang="scss">
-#app {
-  height: 100%;
-  position: relative;
-}
-</style>

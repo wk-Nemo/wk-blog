@@ -5,10 +5,6 @@ import BlogTag from '@/views/blog-tag'
 
 const routes = [
   {
-    path: '/',
-    redirect: '/archives'
-  },
-  {
     path: '/archives',
     component: BlogArchive
   },
