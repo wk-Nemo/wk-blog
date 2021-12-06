@@ -8,15 +8,18 @@
         <a href="" class="name">KuiWu</a>
         <p class="signature">努力做好每一件事</p>
       </div>
-      <div class="selected">
-        <div
-          v-for="(item, index) in selectedItems"
+      <div class="options">
+        <router-link
+          v-for="(item, index) in routerOptions"
           :key="index"
-          class="selected-item"
+          class="options-item"
+          :class="{'selected-options-item': item.name === selectedOption}"
+          @click="optionClick(item)"
+          :to="item.path"
         >
           <span class="item-number">{{item.number}}</span>
           <span class="item-name">{{item.name}}</span>
-        </div>
+        </router-link>
       </div>
       <div class="direction">
         <a
@@ -36,20 +39,24 @@ export default {
   name: 'my-message',
   data () {
     return {
-      selectedItems: [
+      routerOptions: [
         {
           number: 37,
-          name: '归档'
+          name: '归档',
+          path: '/archives'
         },
         {
           number: 6,
-          name: '分类'
+          name: '分类',
+          path: '/categories'
         },
         {
           number: 5,
-          name: '标签'
+          name: '标签',
+          path: '/tags'
         }
       ],
+      selectedOption: '归档',
       directions: [
         {
           name: 'Home',
@@ -61,6 +68,11 @@ export default {
         }
       ],
       selectedDirection: 'Home'
+    }
+  },
+  methods: {
+    optionClick (item) {
+      this.selectedOption = item.name
     }
   }
 }
@@ -113,7 +125,7 @@ export default {
   }
 }
 
-.selected {
+.options {
   display: flex;
   justify-content: space-around;
   margin: 0 1rem;
@@ -122,11 +134,12 @@ export default {
   text-align: center;
   white-space: nowrap;
   background: #fff;
-  .selected-item {
+  .options-item {
     position: relative;
     padding: 1.25rem 0;
     min-width: 24%;
     cursor: pointer;
+    color: black;
     span {
       display: block;
       margin: 0 .5rem;
@@ -140,6 +153,27 @@ export default {
       font-size: .95rem;
       opacity: .63;
     }
+  }
+  .options-item::after {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    width: 62%;
+    height: .3rem;
+    content: "";
+    transition: transform .4s;
+    transform: scaleY(0);
+    transform-origin: bottom center;
+    border-radius: 3px 3px 0 0;
+    background-color: currentColor;
+  }
+  .options-item:hover:after {
+    transform: scaleX(1);
+  }
+  .selected-options-item::after {
+    transform: scaleX(1);
   }
 }
 
