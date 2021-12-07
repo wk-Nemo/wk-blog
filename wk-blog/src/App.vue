@@ -1,19 +1,31 @@
 <template>
   <div>
     <Header></Header>
-    <Home></Home>
+    <div class="container">
+      <MyMessage></MyMessage>
+      <router-view></router-view>
+    </div>
   </div>
 </template>
 
 <script>
 import Header from '@/views/header'
-import Home from '@/views/home'
+import MyMessage from '@/components/my-message/my-message'
 
 export default {
   name: 'app',
   components: {
     Header,
-    Home
+    MyMessage
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.container {
+  width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  height: 100vh;
+}
+</style>

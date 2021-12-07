@@ -74,7 +74,7 @@ export default {
   top: 42rem;
   bottom: 0;
   height: 100%; */
-  border-right: 1px solid $color-border;
+  /* border-right: 1px solid $color-border; */
   .my-message-content {
     position: relative;
     margin-right: -1rem;
