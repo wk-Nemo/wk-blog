@@ -2,7 +2,7 @@
   <div class="home">
     <div class="home-list">
       <div
-        v-for="item in list"
+        v-for="item in articleList"
         :key="item.id"
         class="home-list-item"
       >
@@ -24,32 +24,19 @@
 </template>
 
 <script>
+import getArticles from '@/server/getArticles'
 
 export default {
   name: 'blog-home',
   data () {
     return {
-      list: [
-        {
-          id: 1,
-          title: '优雅地修改他人贡献的 Pull Request',
-          categories: 'js',
-          time: '2020-09-19',
-          read: '1826 字约 12 分钟',
-          imgSrc: 'https://liuyib.github.io/assets/banner/add-commits-to-others-pr.png',
-          introduce: '2019 年，我在 Github 上开源了自己的第一个开源项目 hexo-theme-stun，它是一个基于 Hexo 框架的博客主题。值得庆幸的是，在维护期间，有许多 Github 用户为这个项目贡献了 Pull Request。'
-        },
-        {
-          id: 2,
-          title: '优雅地修改他人贡献的 Pull Request',
-          categories: 'js',
-          time: '2020-09-19',
-          read: '1826 字约 12 分钟',
-          imgSrc: 'https://liuyib.github.io/assets/banner/add-commits-to-others-pr.png',
-          introduce: '2019 年，我在 Github 上开源了自己的第一个开源项目 hexo-theme-stun，它是一个基于 Hexo 框架的博客主题。值得庆幸的是，在维护期间，有许多 Github 用户为这个项目贡献了 Pull Request。'
-        }
-      ]
+      articleList: []
     }
+  },
+  async created () {
+    const data = await getArticles()
+    console.log(data)
+    this.articleList = data
   }
 }
 </script>
