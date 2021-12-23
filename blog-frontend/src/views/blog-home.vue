@@ -2,7 +2,7 @@
   <div class="home">
     <div class="home-list">
       <div
-        v-for="item in articleList"
+        v-for="item in showArticleList"
         :key="item.id"
         class="home-list-item"
       >
@@ -31,32 +31,53 @@
        </div>
       </div>
     </div>
+    <page-tuner
+      :pages="pageList"
+      @changePage="changePage"
+    ></page-tuner>
   </div>
 </template>
 
 <script>
 import getArticles from '@/server/getArticles'
+import PageTuner from '@/components/page-turner/page-tuner.vue'
 
+const PAGE_SIZE = 6
 export default {
   name: 'blog-home',
+  components: {
+    PageTuner
+  },
   data () {
     return {
-      articleList: []
-      // showList: []
+      articleList: [],
+      showArticleList: [],
+      pageList: []
     }
   },
   async created () {
     this.articleList = await getArticles()
-    console.log(typeof this.articleList[0].date)
-    for (let i = 0; i < this.articleList.length; i++) {
+    const articleListLen = this.articleList.length
+
+    for (let i = 0; i < articleListLen; i++) {
       const number = this.articleList[i].content.length
       const time = Math.floor(number / 150)
       const date = this.articleList[i].date
       this.articleList[i].readTime = `${number} 字约 ${time} 分钟`
       this.articleList[i].date = date.slice(0, 10)
     }
-    // console.log(this.articleList)
-    // this.showList = this.articleList.slice(0, 5)
+
+    this.showArticleList = this.articleList.slice(0, PAGE_SIZE)
+
+    const pages = Math.ceil(articleListLen / PAGE_SIZE)
+    for (let i = 0; i < pages; i++) {
+      this.pageList.push(i)
+    }
+  },
+  methods: {
+    changePage (page) {
+      this.showArticleList = this.articleList.slice(page * PAGE_SIZE, (page + 1) * PAGE_SIZE)
+    }
   }
 }
 </script>

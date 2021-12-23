@@ -47,7 +47,7 @@ app.get('/categories', function (req, res) {
 })
 
 app.get('/articles', function(req, res) {
-  var sql = 'SELECT * FROM articles'
+  var sql = 'SELECT * FROM articles ORDER BY date DESC'
   
   connection.query(sql, function (err, result) {
     if(err) {
@@ -55,5 +55,5 @@ app.get('/articles', function(req, res) {
       return
     }
     res.send(result)
-  });
+  })
 })

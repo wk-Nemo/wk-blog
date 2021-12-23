@@ -44,9 +44,10 @@ export default {
     return {
       categoriesList: [],
       articleList: [],
+
       routerOptions: [
         {
-          number: 37,
+          number: 0,
           name: '归档',
           path: '/home'
         },
@@ -75,10 +76,10 @@ export default {
   //   }
   // },
   async created () {
-    this.articleList = await getArticles()
-    this.routerOptions[0].number = this.articleList.length
     this.categoriesList = await getCategories()
     this.routerOptions[1].number = this.categoriesList.length
+    this.articleList = await getArticles()
+    this.routerOptions[0].number = this.articleList.length
   }
 }
 </script>

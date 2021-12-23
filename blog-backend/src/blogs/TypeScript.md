@@ -1,7 +1,7 @@
 ---
 title: TypeScript
 date: 2021-10-04 13:40:38
-tags: TypeScript
+categories: JavaScript
 ---
 
 ## 什么是TypeScript
@@ -382,7 +382,6 @@ function getLength(input: string | number): number {
   return input.toString().length
 }
 ```
-
 
 
 

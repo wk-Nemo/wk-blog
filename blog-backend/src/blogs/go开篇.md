@@ -1,7 +1,7 @@
 ---
 title: go开篇
 date: 2021-10-29 17:05:50
-tags:
+categories: 后端
 ---
 
 ##  Golang的学习方向
@@ -219,5 +219,4 @@ func counter(w http.ResponseWriter, r *http.Request) {
 	mu.Unlock()
 }
 ```
-
 
