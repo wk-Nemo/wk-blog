@@ -49,7 +49,7 @@ export default {
         {
           number: 0,
           name: '归档',
-          path: '/home'
+          path: '/archives'
         },
         {
           number: 0,

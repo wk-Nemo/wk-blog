@@ -5,6 +5,7 @@
         v-for="item in showArticleList"
         :key="item.id"
         class="home-list-item"
+        @click="handleBlog(item)"
       >
        <div class="item-container">
           <h1 class="title">{{item.title}}</h1>
@@ -44,7 +45,7 @@ import PageTuner from '@/components/page-turner/page-tuner.vue'
 
 const PAGE_SIZE = 6
 export default {
-  name: 'blog-home',
+  name: 'blog-archives',
   components: {
     PageTuner
   },
@@ -75,6 +76,9 @@ export default {
     }
   },
   methods: {
+    handleBlog (article) {
+      this.$router.push(`/blog/${article.id}`)
+    },
     changePage (page) {
       this.showArticleList = this.articleList.slice(page * PAGE_SIZE, (page + 1) * PAGE_SIZE)
     }
