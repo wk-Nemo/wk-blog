@@ -64,8 +64,7 @@ export default {
 <style lang="scss" scoped>
 .home {
   width: 100%;
-    overflow-x: hidden;
-  padding: 20px;
+  padding: 1rem;
   .home-list {
     width: 100%;
     /* padding: 1rem; */
@@ -127,6 +126,7 @@ export default {
 @media (max-width: 575.98px) {
   .home {
     padding: 10px;
+    overflow-x: hidden;
     .home-list {
       .home-list-item {
         /* padding: 15px 0; */
@@ -149,6 +149,7 @@ export default {
 @media (max-width: 767.98px) {
   .home {
     padding: 10px;
+    overflow-x: hidden;
   }
 }
 </style>

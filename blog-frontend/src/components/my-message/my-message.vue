@@ -85,12 +85,7 @@ export default {
 
 <style lang="scss" scoped>
 .my-message {
-  /* position: fixed;
-  left: 0;
-  top: 42rem;
-  bottom: 0;
-  height: 100%; */
-  /* border-right: 1px solid $color-border; */
+  padding: 1rem;
   .my-message-content {
     position: relative;
     margin-right: -1rem;
