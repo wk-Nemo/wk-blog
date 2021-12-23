@@ -1,0 +1,625 @@
+---
+title: 秋招保驾护航——vue篇
+date: 2021-09-07 09:21:30
+categories: 前端框架
+tags: 面试
+---
+秋招保驾护航系列文章正在持续更新，往期文章如下，需者自取：
+
+- html、css：[秋招保驾护航——HTML、CSS篇](https://juejin.cn/post/6998576161382989861)
+- js：[秋招保驾护航——js面试篇（上）](https://juejin.cn/post/6987776819281805342/ "https://juejin.cn/post/6987776819281805342/")、[秋招保驾护航——js面试篇（下）](https://juejin.cn/post/6988515657105047559 "https://juejin.cn/post/6988515657105047559")
+- 浏览器：[秋招保驾护航——浏览器篇](http://blog.wutortoise.cn/2021/08/10/%E7%A7%8B%E6%8B%9B%E4%BF%9D%E9%A9%BE%E6%8A%A4%E8%88%AA%E2%80%94%E2%80%94%E2%80%94%E6%B5%8F%E8%A7%88%E5%99%A8%E7%AF%87)
+
+## vue面试考察方面
+
+- 框架的使用（基本使用，高级特性，周边插件）
+- 框架的原理（基本原理的了解，热门技术的深度，全面性）
+- 框架的实际应用，即设计能力（组件结构，数据结构）
+
+
+
+## 基本使用
+
+在这里，是一些日常使用的内容，在此列出来，可以思考平时是如何使用的，不太清楚的可以去看官方文档，跟着做一些demo。
+
+- 插值、表达式、指令、动态属性、v-html
+- computed 和 watch
+- class 和 style、动态属性
+- v-if 和 v-show
+- 列表循环渲染v-for
+  - key的重要性（后面涉及原理时再说）
+  - v-for和v-if不能一起使用：会进行重复判断
+- 事件
+  - event参数，event是原生的
+  - 事件修饰符
+  - 观察事件被绑定到哪？绑定到了当前的元素
+- 表单
+  - v-model
+  - 常见表单项：textarea、checkbox、radio、select
+  - 修饰符：lazy、number、trim
+
+### 1. 计算属性 vs 方法
+
+**区别：** 我们可以将同一个函数定义成一个方法而不是计算属性。两者最终的结果是完全相同的。但是**计算属性是基于他们的响应式依赖进行缓存**。意味着依赖的值没有发生改变的话，多次访问计算属性的函数只会立即返回之前缓存的结果，不会再次执行函数。
+
+**优点：** 进行了缓存以后，如果有一个性能开销较大的计算属性，它需要遍历一个巨大的数组并做大量的计算。我们如果进行了缓存，在依赖的数据没有变化时就可以直接返回结果，避免了性能的浪费。
+
+### 2. 计算属性 vs 侦听属性
+
+虽然计算属性在大多数的情况下更适合，但是也有需要侦听属性的时候。**当需要在数据变化时执行异步或开销较大的操作时**，这个方式是最有用的。
+
+**使用区别：**
+
+- `computed`可以设置`get`、`set`
+- `watcher`可以设置`immediate`、`deep`
+  - 正常情况下，`侦听属性`提供的函数是不会立即执行的，只有在对应的`vue data`发生变化时，`侦听属性`对应的函数才会执行。那如果我们需要`侦听属性`对应的函数立即执行一次，就可以给`侦听属性`提供一个`immediate`选项，并设置其值为`true`。
+  - 如果我们对一个`对象类型`的`vue data`进行侦听，当这个对象内的属性发生变化时，默认是不会触发侦听函数的。设置`deep`为true，则可以对其进行一个深层次的监听。
+
+**运用场景：**
+
+- 当我们需要进行数值计算，并且依赖于其它数据时，应该使用 computed，因为可以利用 computed 的缓存特性，避免每次获取值时，都要重新计算；
+- 当我们需要在数据变化时执行异步或开销较大的操作时，应该使用 watch，使用 watch 选项允许我们执行异步操作 ( 访问一个 API )，限制我们执行该操作的频率，并在我们得到最终结果前，设置中间状态。这些都是计算属性无法做到的。
+
+### 3. 动态属性
+
+- class对象语法
+
+  ```html
+  <div
+    class="static"
+    v-bind:class="{ active: isActive, 'text-danger': hasError }"
+  ></div>
+  
+  <div v-bind:class="classObject"></div>
+  ```
+
+  ```javascript
+  export default {
+  	data() {
+    	return {
+  			isActive: true,
+    		hasError: false,
+        classObject: {
+          active: true,
+          'text-danger': false
+        },
+  		}
+    }
+  }
+  ```
+
+- class数组语法
+
+  ```html
+  <div v-bind:class="[activeClass, errorClass]"></div>
+  ```
+
+  ```javascript
+  export default {
+  	data() {
+    	return {
+  			activeClass: 'active',
+    		errorClass: 'text-danger'
+  		}
+    }
+  }
+  ```
+
+- style对象语法
+
+  ```html
+  <div v-bind:style="{ color: activeColor, fontSize: fontSize + 'px' }"></div>
+  <div v-bind:style="styleObject"></div>
+  ```
+
+  ```javascript
+  export default {
+  	data() {
+    	return {
+  			color: 'red',
+      	fontSize: '13px',
+        styleObject: {
+          color: 'red',
+          fontSize: '13px'
+        }
+  		}
+    }
+  }
+  ```
+
+- style数组语法
+
+  ```html
+  <div v-bind:style="[style1,style2]"></div>
+  ```
+
+  ```javascript
+  export default {
+  	data() {
+    	return {
+  			style1:{fontSize:'100px'},
+  			style2:{background:'red'},
+  		}
+    }
+  }
+  ```
+
+### 4. v-if 和 v-show 的区别
+
+- **v-if** 是**真正**的条件渲染，因为它会确保在切换过程中条件块内的事件监听器和子组件适当地被销毁和重建；也是**惰性的**：如果在初始渲染时条件为假，则什么也不做——直到条件第一次变为真时，才会开始渲染条件块。
+
+- **v-show** 就简单得多——不管初始条件是什么，元素总是会被渲染，并且只是简单地基于 CSS 的 “display” 属性进行切换。
+
+所以，v-if 适用于在运行时很少改变条件，不需要频繁切换条件的场景；v-show 则适用于需要非常频繁切换条件的场景。
+
+### 5. 事件修饰符有哪些
+
+为了解决这个问题，Vue.js 为 `v-on` 提供了**事件修饰符**。之前提过，修饰符是由点开头的指令后缀来表示的。
+
+- `.stop`
+- `.prevent`
+- `.capture`
+- `.self`
+- `.once`
+- `.passive`
+
+```html
+<!-- 阻止单击事件继续传播 -->
+<a v-on:click.stop="doThis"></a>
+
+<!-- 提交事件不再重载页面 -->
+<form v-on:submit.prevent="onSubmit"></form>
+
+<!-- 修饰符可以串联 -->
+<a v-on:click.stop.prevent="doThat"></a>
+
+<!-- 只有修饰符 -->
+<form v-on:submit.prevent></form>
+
+<!-- 添加事件监听器时使用事件捕获模式 -->
+<!-- 即内部元素触发的事件先在此处理，然后才交由内部元素进行处理 -->
+<div v-on:click.capture="doThis">...</div>
+
+<!-- 只当在 event.target 是当前元素自身时触发处理函数 -->
+<!-- 即事件不是从内部元素触发的 -->
+<div v-on:click.self="doThat">...</div>
+
+<!-- 点击事件将只会触发一次 -->
+<a v-on:click.once="doThis"></a>
+
+<!-- 滚动事件的默认行为 (即滚动行为) 将会立即触发 -->
+<!-- 而不会等待 `onScroll` 完成  -->
+<!-- 这其中包含 `event.preventDefault()` 的情况 -->
+<div v-on:scroll.passive="onScroll">...</div>
+```
+
+### 6. v-model
+
+你可以用 `v-model` 指令在表单 `<input>`、`<textarea>` 及 `<select>` 元素上创建双向数据绑定。它会根据控件类型自动选取正确的方法来更新元素。尽管有些神奇，但 `v-model` 本质上不过是语法糖。它负责监听用户的输入事件以更新数据，并对一些极端场景进行一些特殊处理。
+
+`v-model` 会忽略所有表单元素的 `value`、`checked`、`selected` attribute 的初始值而总是将 Vue 实例的数据作为数据来源。你应该通过 JavaScript 在组件的 `data` 选项中声明初始值。
+
+`v-model` 在内部为不同的输入元素使用不同的 property 并抛出不同的事件：
+
+- text 和 textarea 元素使用 `value` property 和 `input` 事件；
+- checkbox 和 radio 使用 `checked` property 和 `change` 事件；
+- select 字段将 `value` 作为 prop 并将 `change` 作为事件。
+
+```html
+<input v-model='something'>
+<!-- 相当于 -->
+<input v-bind:value="something" v-on:input="something = $event.target.value">
+```
+
+## 组件的使用
+
+- data为什么是一个函数？
+- 如何理解单项数据流？
+- 组件之间的通信？
+- slot插槽
+- 动态组件 & 异步组件
+
+### 1. data为什么是一个函数？
+
+**一个组件的 `data` 选项必须是一个函数**，因此每个实例可以维护一份被返回对象的独立的拷贝，如果没有这条规则，多处复用组件的地方会共享同一个数据，从而影响其他的实例。
+
+### 2. 如何理解单项数据流？
+
+数据总是从父组件传到子组件，子组件没有权利修改父组件传过来的数据，只能请求父组件对原始数据进行修改。这样会防止从子组件意外改变父级组件的状态，从而导致你的应用的数据流向难以理解。
+
+### 3. 组件之间通信的方式
+
+> [vue中8种组件通信方式, 值得收藏!](https://juejin.cn/post/6844903887162310669#heading-9)
+
+- 使用props和$emit来通信
+- vuex 状态管理
+- eventBus
+- localStorage/sessionStorage
+
+#### （1）eventBus
+
+因为vue实例中提供了$on、$emit等方法所以只需要创建一个空的vue实例，在组件中通过$on()注册事件，在另外一个组件中通过$emit()去执行对应的事件并且可以传参来达到组件之间的通讯。
+
+```javascript
+// event-bus.js
+import Vue from 'vue'
+export const EventBus = new Vue()
+
+或者
+
+// main.js
+Vue.prototype.$EventBus = new Vue()
+```
+
+**实现一个eventBus:**
+
+```javascript
+const eventBus = () => {
+  let subs = new Map()
+
+  return {
+    subs,
+    $on (type, callback) {
+      const sub = subs.get(type)
+      const isEmpty = sub && sub.push(callback)
+
+      if (!isEmpty) {
+        subs.set(type, [callback])
+      }
+    },
+    $emit (type) {
+      const sub = subs.get(type)
+      sub.forEach(fn => fn())
+    },
+    $off (type, callback) {
+      const sub = subs.get(type)
+      if (sub) {
+        const index = sub.indexOf(callback)
+        if (index !== -1) {
+          sub.splice(index, 0, 1)
+        }
+      }
+    }
+  };
+}
+```
+
+## 生命周期
+
+### 1. 什么是生命周期？
+
+Vue 实例有一个完整的生命周期，也就是从开始创建、初始化数据、编译模版、挂载 Dom -> 渲染、更新 -> 渲染、卸载等一系列过程，我们称这是 Vue 的生命周期。
+
+### 2. 各个生命周期的作用
+
+| 生命周期      | 描述                                                         |
+| ------------- | ------------------------------------------------------------ |
+| beforeCreate  | 组件实例被创建之初，组件的属性生效之前                       |
+| created       | 组件实例已经完全创建，属性也绑定，但真实 dom 还没有生成，$el 还不可用 |
+| beforeMount   | 在挂载开始之前被调用：相关的 render 函数首次被调用           |
+| mounted       | el 被新创建的 vm.$el 替换，并挂载到实例上去之后调用该钩子    |
+| beforeUpdate  | 组件数据更新之前调用，发生在虚拟 DOM 打补丁之前              |
+| update        | 组件数据更新之后                                             |
+| activited     | keep-alive 专属，组件被激活时调用                            |
+| deactivated   | keep-alive 专属，组件被销毁时调用                            |
+| beforeDestory | 组件销毁前调用                                               |
+| destoryed     | 组件销毁后调用                                               |
+
+生命周期示意图：
+
+![1.png](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/b4d7ca31ce13456198478a733f756fb8~tplv-k3u1fbpfcp-zoom-1.image)
+
+### 3. 在哪个生命周期内调用异步请求？
+
+可以在钩子函数 created、beforeMount、mounted 中进行调用，因为在这三个钩子函数中，data 已经创建，可以将服务端端返回的数据进行赋值。但是本人推荐在 created 钩子函数中调用异步请求，因为在 created 钩子函数中调用异步请求有以下优点：
+
+- 能更快获取到服务端数据，减少页面 loading 时间；
+- ssr 不支持 beforeMount 、mounted 钩子函数，所以放在 created 中有助于一致性；
+
+### 4. 在什么阶段可以访问DOM？
+
+根据生命周期示意图，可以在mounted中访问操作DOM
+
+### 5. Vue 的父组件和子组件生命周期钩子函数执行顺序？
+
+- 加载渲染过程
+
+父 beforeCreate -> 父 created -> 父 beforeMount -> 子 beforeCreate -> 子 created -> 子 beforeMount -> 子 mounted -> 父 mounted
+
+- 子组件更新过程
+
+父 beforeUpdate -> 子 beforeUpdate -> 子 updated -> 父 updated
+
+- 销毁过程
+
+父 beforeDestroy -> 子 beforeDestroy -> 子 destroyed -> 父 destroyed
+
+### 6. $nextTick
+
+> 原理：[Vue $nextTick 原理](https://www.cnblogs.com/gaosirs/p/10595326.html)
+
+- Vue是异步渲染，data改变后DOM不会立即变化
+- $nextTick会在DOM渲染后被触发，以获取最新的DOM
+
+### 7. keep-alive
+
+> 官方文档：[keep-alive](https://cn.vuejs.org/v2/api/#keep-alive)
+
+当在这些组件之间切换的时候，你有时会想保持这些组件的状态，以避免反复重渲染导致的性能问题。
+
+相应的，也有两种专属的生命周期：（1）activited，组件激活（2）deactivated，组件销毁
+
+## vue的高级特性
+
+### 1. mixin
+
+> 官方文档：[混入](https://cn.vuejs.org/v2/guide/mixins.html#%E5%9F%BA%E7%A1%80)
+
+对于一些公用的逻辑，可以采用混入的方式进行。比如在做表单校验逻辑时，很多用到表单的地方都需要使用，我们可以单独的定义一个form.js作为表单的混入。
+
+## Vue插件
+
+- Vuex
+- Vue-Router
+
+### 1. Vuex
+
+- 基本的概念和使用
+- 一些场景设计
+
+#### （1）state、mapState
+
+- state： Vuex 的状态存储是响应式的，可以从store中读取state
+- mapState：辅助生成计算属性
+
+#### （2）getters、mapGetters
+
+- getters：可以认为是 store 的计算属性。就像计算属性一样，getter 的返回值会根据它的依赖被缓存起来，且只有当它的依赖值发生了改变才会被重新计算。
+- mapGetters：将 store 中的 getter 映射到局部计算属性
+
+#### （3）mutation、mapMutations、commit
+
+- state的数据必须通过mutation来改变
+- 而mutation必须是同步的。
+- 组件可以通过commit来调用mutation
+
+#### （4）action、mapActions、dispatch
+
+- mutation是同步的，action是异步的
+- 组件可以通过dispatch调用action
+- action在内部使用commit调用mutation
+
+###  2. Vue-Router
+
+- 路由模式：hash、H5 history
+- 路由配置：动态路由、懒加载
+
+#### （1）vue-router路由模式有几种
+
+vue-router 有 3 种路由模式：hash、history、abstract。
+
+- hash:  使用 URL hash 值来作路由。支持所有浏览器，包括不支持 HTML5 History Api 的浏览器；
+- history :  依赖 HTML5 History API 和服务器配置。具体可以查看 HTML5 History 模式；
+- abstract :  支持所有 JavaScript 运行环境，如 Node.js 服务器端。如果发现没有浏览器的 API，路由会自动强制进入这个模式。
+
+#### （2）hash模式的原理
+
+早期的前端路由的实现就是基于 location.hash 来实现的。其实现原理很简单，location.hash 的值就是 URL 中 # 后面的内容。比如下面这个网站，它的 location.hash 的值为 '#search'：
+
+```
+https://www.word.com#search
+```
+
+hash  路由模式的实现主要是基于下面几个特性：
+
+- URL 中 hash 值只是客户端的一种状态，也就是说当向服务器端发出请求时，hash 部分不会被发送；
+- hash 值的改变，都会在浏览器的访问历史中增加一个记录。因此我们能通过浏览器的回退、前进按钮控制hash 的切换；
+- 可以通过 a 标签，并设置 href 属性，当用户点击这个标签后，URL 的 hash 值会发生改变；或者使用  JavaScript 来对 loaction.hash 进行赋值，改变 URL 的 hash 值；
+- 我们可以使用 hashchange 事件来监听 hash 值的变化，从而对页面进行跳转（渲染）。
+
+
+
+#### （3）history模式的原理
+
+HTML5 提供了 History API 来实现 URL 的变化。其中做最主要的 API 有以下两个：history.pushState() 和 history.repalceState()。这两个 API 可以在不进行刷新的情况下，操作浏览器的历史纪录。唯一不同的是，前者是新增一个历史记录，后者是直接替换当前的历史记录，如下所示：
+
+```javascript
+window.history.pushState(null, null, path);
+window.history.replaceState(null, null, path);
+```
+
+history 路由模式的实现主要基于存在下面几个特性：
+
+- pushState 和 repalceState 两个 API 来操作实现 URL 的变化 ；
+- 我们可以使用 popstate  事件来监听 url 的变化，从而对页面进行跳转（渲染）；
+- history.pushState() 或 history.replaceState() 不会触发 popstate 事件，这时我们需要手动触发页面跳转（渲染）。
+
+## Vue原理
+
+- 数据双向绑定
+- 虚拟DOM
+
+### 1. 数据双向绑定
+
+#### （1）数据双向绑定原理
+
+> [0 到 1 掌握：Vue 核心之数据双向绑定](https://juejin.cn/post/6844903903822086151)
+>
+> [秋招保驾护航——vue篇之数据双向绑定](https://juejin.cn/post/6993373656051089421)
+
+我们会通过实现以下 4 个步骤，来实现数据的双向绑定：
+
+1、实现一个监听器 `Observer` ，用来劫持并监听所有属性，如果属性发生变化，就通知订阅者；
+
+2、实现一个订阅器 `Dep`，每个被劫持的属性内部都会初始化一个Dep，Dep的功能是一个依赖的队列，可以进行添加订阅、取消订阅、以及触发所有依赖。
+
+3、实现一个订阅者 `Watcher`，可以收到属性的变化通知并执行相应的方法，从而更新视图；
+
+4、实现一个解析器 `Compile`，可以解析每个节点的相关指令，对模板数据和订阅器进行初始化。
+
+以上四个步骤的流程图表示如下：
+
+
+
+![3.png](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/46c4a79b9b2e4452838a2a4e26283079~tplv-k3u1fbpfcp-zoom-1.image)
+
+#### （2）Array是如何实现数据监听的
+
+vue2.x对象的变化侦测是通过`Object.defineProperty`进行数据劫持完成的，但是如`this.list.push(1)`这种对数组的操作是通过`Array`原型上的方法来改变数组的内容，不会触发`getter`和`setter`。
+
+在ES6之前，js没有提供元编程的能力，也就是没有提供可以拦截原型的方法。但我们可以使用一个拦截器覆盖`Array.prototype`，因此每次访问`push`等原型上的方法时，相当于执行拦截器上提供的方法。
+
+![image.png](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/e9ec74171a6846b5a3ded4eb64221987~tplv-k3u1fbpfcp-watermark.awebp)
+
+#### （3）vue3中数据监听的实现方式和vue2的进行对比
+
+vue3中使用了Proxy，而vue2是使用Object.defineProperty
+
+**Proxy 的优势如下:**
+
+- Proxy 可以直接监听对象而非属性；
+- Proxy 可以直接监听数组的变化；
+- Proxy 有多达 13 种拦截方法,不限于 apply、ownKeys、deleteProperty、has 等等是 Object.defineProperty 不具备的；
+- Proxy 返回的是一个新对象,我们可以只操作新的对象达到目的,而 Object.defineProperty 只能遍历对象属性直接修改；
+- Proxy 作为新标准将受到浏览器厂商重点持续的性能优化，也就是传说中的新标准的性能红利；
+
+**Object.defineProperty 的优势如下:**
+
+- 兼容性好，支持 IE9，而 Proxy 的存在浏览器兼容性问题,而且无法用 polyfill 磨平，因此 Vue 的作者才声明需要等到下个大版本( 3.0 )才能用 Proxy 重写。
+
+### 2. 虚拟DOM
+
+> [深入剖析：Vue核心之虚拟DOM](https://juejin.cn/post/6844903895467032589#heading-5)
+>
+> [15张图，20分钟吃透Diff算法核心原理，我说的！！！](https://juejin.cn/post/6994959998283907102)
+
+#### （1）虚拟DOM的优缺点
+
+**优点：**
+
+- 保证性能下限： 框架的虚拟 DOM 需要适配任何上层 API 可能产生的操作，它的一些 DOM 操作的实现必须是普适的，所以它的性能并不是最优的；但是比起粗暴的 DOM 操作性能要好很多，因此框架的虚拟 DOM 至少可以保证在你不需要手动优化的情况下，依然可以提供还不错的性能，即保证性能的下限；
+
+- 无需手动操作 DOM： 我们不再需要手动去操作 DOM，只需要写好 View-Model 的代码逻辑，框架会根据虚拟 DOM 和 数据双向绑定，帮我们以可预期的方式更新视图，极大提高我们的开发效率；
+
+- 跨平台： 虚拟 DOM 本质上是 JavaScript 对象,而 DOM 与平台强相关，相比之下虚拟 DOM 可以进行更方便地跨平台操作，例如服务器渲染、weex 开发等等。
+
+**缺点：**
+
+- 无法进行极致优化： 虽然虚拟 DOM + 合理的优化，足以应对绝大部分应用的性能需求，但在一些性能要求极高的应用中虚拟 DOM 无法进行针对性的极致优化。
+
+- 首次渲染大量 DOM 时，由于多了一层虚拟 DOM 的计算，会比 innerHTML 插入慢。
+
+#### （2）虚拟DOM实现的原理
+
+![截屏2021-08-07 下午10.59.31.png](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/1c57a7b4e91a4a359474fb4c281f6d8e~tplv-k3u1fbpfcp-watermark.awebp)
+
+虚拟 DOM 的实现原理主要包括以下 3 部分：
+
+- 用 JavaScript 对象模拟真实 DOM 树，对真实 DOM 进行抽象；
+- diff 算法 — 比较两棵虚拟 DOM 树的差异；
+- pach 算法 — 将两个虚拟 DOM 对象的差异应用到真正的 DOM 树。
+
+#### （3）diff算法
+
+新旧虚拟DOM对比的时候，Diff算法比较只会在同层级进行, 不会跨层级比较。 所以Diff算法是:`广度优先算法`。 时间复杂度:`O(n)`
+
+![截屏2021-08-08 上午11.32.47.png](https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/5ca3d338e5a445ab80e40042c50ac79a~tplv-k3u1fbpfcp-watermark.awebp)
+
+
+
+#### （4）Vue中的Key有什么作用
+
+所以 Vue 中 key 的作用是：key 是为 Vue 中 vnode 的唯一标记，通过这个 key，我们的 diff 操作可以更准确、更快速
+
+**更准确**：因为带 key 就不是就地复用了，在 sameNode 函数 `a.key === b.key` 对比中可以避免就地复用的情况。所以会更加准确。
+
+**更快速**：利用 key 的唯一性生成 map 对象来获取对应节点，比遍历方式更快，源码如下：
+
+Ps：如果使用了index作为key，那么key值不能起到唯一标识的作用，那么就不能更快更准确的去执行diff算法了。
+
+### 3. 模板编译
+
+> [《Vue不看源码懂原理》系列——Vue模板编译](https://juejin.cn/post/6844904110391558151)
+
+我们在vue中写的template模板不是真正的html，因为其中有大量的指令如`v-on`、`v-if`、`v-for`、`v-model`，还有插值等内容，这些在html上是没有的。因此vue提供了一个模板解析库，模板编译首先将模板解析成AST（抽象语法树），然后使用AST生成渲染函数（render函数，可以生成虚拟节点）。
+
+详细过程可以看上面的文章，流程如下：
+
+- 模板解析成AST树：**使用解析器将模板解析成HTML树**
+
+  ```html
+  <div>
+    <p>{{name}}</p>
+  </div>
+  ```
+
+  ```javascript
+  {
+    tag: "div"
+    type: 1,
+    staticRoot: false,
+    static: false,
+    plain: true,
+    parent: undefined,
+    attrsList: [],
+    attrsMap: {},
+    children: [
+      {
+        tag: "p"
+        type: 1,
+        staticRoot: false,
+        static: false,
+        plain: true,
+        parent: {tag: "div", ...},
+        attrsList: [],
+        attrsMap: {},
+        children: [{
+          type: 2,
+          text: "{{name}}",
+          static: false,
+          expression: "_s(name)"
+        }]
+      }
+    ]
+  }
+  ```
+
+- 进行优化：**使用优化器将解析完的AST进行遍历**，找出**静态节点**并标记，在下次更新对比虚拟DOM的vNode时，如果发现这两个节点是静态节点，则直接跳过更新节点的流程。达到进一步避免一些无用的DOM操作来提升性能，因为静态节点在首次渲染后一定不会改变。
+
+- AST生成渲染函数：**使用代码生成器将解析完的AST转化为渲染函数需要的内容**。这里用到了with语法，内部的this指向的就是new Vue的实例，的这里的`_c`就是`creatElement()`。
+
+  ```javascript
+  // 解析完的AST生成代码字符串
+  `with(this) {return _c('div', [_c('p', [_v(_s(name))]), _v(" "), _m(0)])}`
+  ```
+
+
+
+### 4. 整体流程
+
+上面讲到了vue的三大核心原理，现在通过vue组件的渲染流程来将三个过程串联起来。
+
+![image](https://user-images.githubusercontent.com/62100025/130717777-0eb5ac53-deb7-4e2b-b3bc-1e3cdf53cd81.png)
+
+我们从组件的渲染过程来分别回顾vue的响应式数据，虚拟dom，以及模板编译。
+
+#### （1）初次渲染
+
+- 解析模板为render函数（一般会在开发环境完成，vue-loader）
+- 触发响应式，监听data属性
+- 执行render函数，生成vnode，调用patch算法首次渲染
+
+先看初次渲染。我们写的template代码看似html，实则不是，因为里面多了v-on、v-if、v-for、v-model、插值等内容，这些在html上是没有的。因此vue提供了一个模板解析库，这个库的实现涉及到了编译原理，咱不作了解，但是我们要知道这个库可以将我们传入的template模板渲染成render函数。
+
+接着，我们需要对数据进行一个响应式的处理，也就是达到数据更新通知视图进行变化的过程。这里实现主要是三个部分，第一部分，实现一个observer类，对data里的所有属性使用object.defineProperty 进行数据劫持，核心就是调用该属性触发getter，更改属性触发setter；解决了数据劫持的问题以后，接下来便是一个发布订阅的过程。第二部分，需要设计一个dep类，当getter被触发时，将相关的依赖收集到数组中，当setter触发以后，便可以通知所有的依赖。第三部分，这些依赖就是watcher，我们在后面的流程中讲到他的妙用。
+
+最后一步，便是调用render函数，调用了render函数以后，就会触发相应数据的getter。在vue中会设置一个window.target并赋值触发getter的地方，然后在dep中会将这个window.target添加到依赖队列中。render函数执行完毕后，会生成虚拟节点。一切就绪后，就会执行patch，因为是第一次，没有oldVNode，会直接渲染上去。
+
+#### （2）更新过程
+
+- 修改data，触发setter
+- 重新执行render函数，生成newVnode
+- 执行patch(oldVnode, newVnode)
+
+当属性被修改时，会触发setter，然后通知dep里的相关依赖，也就是每一个watcher。接着会重新执行render函数，生成newVnode，再调用patch算法，进行同层节点的比较，最后渲染。
+
