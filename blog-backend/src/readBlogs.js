@@ -83,12 +83,20 @@ function getMsg(data) {
     let articleIntroduce
     let articleContent
  
+    articleContent = articleStr.slice(end + 3)
     if(titleStart) articleTitle = getData(articleMsg, titleStart.index + 7)
     if(dateStart) articleDate = getData(articleMsg, dateStart.index + 6)
     if(categoriesStart) articleCategories = getData(articleMsg, categoriesStart.index + 12)
-    if(imgSrcStart) articleImgSrc = getData(articleMsg, imgSrcStart.index + 8)
-    if(introduceStart) articleIntroduce = getData(articleMsg, introduceStart.index + 11)
-    articleContent = articleStr.slice(end + 3)
+    if(imgSrcStart) {
+        articleImgSrc = getData(articleMsg, imgSrcStart.index + 8)
+    } else {
+        articleImgSrc = 'https://liuyib.github.io/assets/banner/1.jpg'
+    } 
+    if(introduceStart) {
+        articleIntroduce = getData(articleMsg, introduceStart.index + 11)
+    } else {
+        articleIntroduce = articleContent.slice(0, 150)
+    }
 
     return {
         articleTitle,

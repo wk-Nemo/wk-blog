@@ -2,6 +2,15 @@ var express = require('express');
 var app = express();
 var mysql = require('mysql');
 
+var connection = mysql.createConnection({
+  host     : 'localhost',
+  user     : 'root',
+  password : '123456',
+  database : 'wkblog'
+})
+
+connection.connect()
+
 //解决跨域
 app.all('*',function (req, res, next) {
   res.header('Access-Control-Allow-Origin', '*');
@@ -24,14 +33,6 @@ var server = app.listen(8081, function () {
 })
 
 app.get('/categories', function (req, res) {
-  var connection = mysql.createConnection({
-    host     : 'localhost',
-    user     : 'root',
-    password : '123456',
-    database : 'wkblog'
-  })
-  connection.connect()
-
   var sql = 'SELECT * FROM categories'
   
   connection.query(sql, function (err, result) {
@@ -40,24 +41,12 @@ app.get('/categories', function (req, res) {
       return
     }
 
-    console.log('--------------------------SELECT CATEGORIES----------------------------');
-    console.log(result)
     res.send(result)
-    console.log('------------------------------------------------------------\n\n');
   });
 
-  connection.end();
 })
 
 app.get('/articles', function(req, res) {
-  var connection = mysql.createConnection({
-    host     : 'localhost',
-    user     : 'root',
-    password : '123456',
-    database : 'wkblog'
-  })
-  connection.connect()
-
   var sql = 'SELECT * FROM articles'
   
   connection.query(sql, function (err, result) {
@@ -65,12 +54,6 @@ app.get('/articles', function(req, res) {
       console.log('[SELECT ERROR] - ',err.message)
       return
     }
-
-  console.log('--------------------------SELECT ARTICLE----------------------------');
-  console.log(result)
-  res.send(result)
-  console.log('------------------------------------------------------------\n\n');
+    res.send(result)
   });
-
-  connection.end();
 })
