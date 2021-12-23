@@ -35,10 +35,15 @@
 </template>
 
 <script>
+import getArticles from '@/server/getArticles'
+import getCategories from '@/server/getCategories'
+
 export default {
   name: 'my-message',
   data () {
     return {
+      categoriesList: [],
+      articleList: [],
       routerOptions: [
         {
           number: 37,
@@ -46,7 +51,7 @@ export default {
           path: '/archives'
         },
         {
-          number: 6,
+          number: 0,
           name: '分类',
           path: '/categories'
         },
@@ -63,6 +68,17 @@ export default {
     optionClick (item) {
       this.selectedOption = item.name
     }
+  },
+  // computed: {
+  //   categoriesLen () {
+  //     return this.categoriesList && this.categoriesList.length
+  //   }
+  // },
+  async created () {
+    this.articleList = await getArticles()
+    this.routerOptions[0].number = this.articleList.length
+    this.categoriesList = await getCategories()
+    this.routerOptions[1].number = this.categoriesList.length
   }
 }
 </script>
@@ -165,38 +181,15 @@ export default {
   }
 }
 
-/* .direction {
-  margin: 2rem 0 3rem;
-  font-family: "Baloo Bhaijaan", "Josefin Sans", "PingFang SC";
-  .direction-item {
-    position: relative;
-    display: block;
-    padding-right: 2rem;
-    border-color: inherit;
-    text-align: right;
-    text-transform: capitalize;
-    white-space: pre;
-    line-height: 3rem;
-    transition: all .15s;
+@media screen and (max-width: 575.98px) {
+  .my-message {
+    display: none;
   }
-  .direction-item::after {
-    position: absolute;
-    top: 50%;
-    right: 0;
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
-    content: "";
-    transform: translate(50%,-50%);
-    background: rgb(243, 246, 247);
-    box-shadow: rgb(224, 224, 224) 0px 0px 0px 1px;
+}
+
+@media screen and (max-width: 991.98px) {
+  .my-message {
+    display: none;
   }
-  .direction-selected-item {
-    font-size: 1.168rem;
-    color: rgb(42, 43, 51);
-  }
-  .direction-selected-item::after {
-    background-color: rgb(42, 43, 51);
-  }
-} */
+}
 </style>

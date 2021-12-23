@@ -64,4 +64,35 @@ export default {
     background-color: rgba(0,0,0,0.5);
   }
 }
+
+@media screen and (max-width: 575.98px) {
+  .header {
+    height: 13rem;
+    .header-banner {
+      .header-banner-info {
+        .header-banner-info-title {
+          font-size: 2rem;
+        }
+        .header-banner-info-subtitle {
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 991.98px) {
+  .header {
+    height: 17rem;
+    .header-banner {
+      .header-banner-info {
+        .header-banner-info-title {
+          font-size: 2rem;
+        }
+        .header-banner-info-subtitle {
+        }
+      }
+    }
+  }
+}
+
 </style>

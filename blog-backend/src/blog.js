@@ -23,29 +23,33 @@ var server = app.listen(8081, function () {
   console.log("应用实例，访问地址为 http:localhost//%s:%s", host, port)
 })
 
-// app.get('/types', function (req, res) {
-//   console.log("types GET 请求")
-//   connection.connect();
+app.get('/categories', function (req, res) {
+  var connection = mysql.createConnection({
+    host     : 'localhost',
+    user     : 'root',
+    password : '123456',
+    database : 'wkblog'
+  })
+  connection.connect()
 
-//   var sql = 'SELECT * FROM type'
+  var sql = 'SELECT * FROM categories'
   
-//   connection.query(sql, function (err, result) {
-//     if(err) {
-//       console.log('[SELECT ERROR] - ',err.message)
-//       return
-//     }
+  connection.query(sql, function (err, result) {
+    if(err) {
+      console.log('[SELECT ERROR] - ',err.message)
+      return
+    }
 
-//   console.log('--------------------------SELECT TYPES----------------------------');
-//   console.log(result)
-//   res.send(result)
-//   console.log('------------------------------------------------------------\n\n');
-//   });
+    console.log('--------------------------SELECT CATEGORIES----------------------------');
+    console.log(result)
+    res.send(result)
+    console.log('------------------------------------------------------------\n\n');
+  });
 
-//   connection.end();
-// })
+  connection.end();
+})
 
 app.get('/articles', function(req, res) {
-  console.log("types GET 请求")
   var connection = mysql.createConnection({
     host     : 'localhost',
     user     : 'root',
