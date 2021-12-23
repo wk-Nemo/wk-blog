@@ -48,7 +48,7 @@ export default {
         {
           number: 37,
           name: '归档',
-          path: '/archives'
+          path: '/home'
         },
         {
           number: 0,
