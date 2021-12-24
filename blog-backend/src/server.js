@@ -24,6 +24,8 @@ app.all('*',function (req, res, next) {
   }
 });
 
+console.log("success1")
+
 var server = app.listen(8081, function () {
  
   var host = server.address().address
@@ -47,6 +49,8 @@ app.get('/categories', function (req, res) {
 })
 
 app.get('/articles', function(req, res) {
+  console.log("success article")
+
   var sql = 'SELECT * FROM articles ORDER BY date DESC'
   
   connection.query(sql, function (err, result) {
