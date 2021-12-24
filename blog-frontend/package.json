@@ -10,6 +10,8 @@
   "dependencies": {
     "axios": "^0.24.0",
     "core-js": "^3.6.5",
+    "github-markdown-css": "^5.1.0",
+    "marked": "^4.0.8",
     "node-sass": "^5.0.0",
     "sass-loader": "^10.1.0",
     "vue": "^3.0.0",

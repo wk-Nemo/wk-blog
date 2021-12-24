@@ -1,5 +1,5 @@
 ---
-title: 浏览器对象模型----BOM
+title: 浏览器对象模型--BOM
 date: 2021-01-16 16:34:32
 categories: JavaScript
 ---
@@ -10,7 +10,7 @@ categories: JavaScript
 网页中切入JS代码的四种方式：
 
  - script元素直接嵌入代码。
- 
+
 
 ```javascript
 <script>
@@ -20,7 +20,7 @@ categories: JavaScript
 ```
 
  - script标签加载外部脚本 
- 
+
 
 ```javascript
 <script src="https://www.example.com/script.js"></script>
@@ -29,7 +29,7 @@ categories: JavaScript
  - 事件属性 
 ```javascript
 <button id="myBtn" onclick="console.log(this.id)">点击</button>
-```	
+```
  - URL 协议
 URL 支持javascript协议，即在 URL 的位置写入代码，使用这个 URL 的时候就会执行 JavaScript 代码。
 
@@ -47,7 +47,7 @@ URL 支持javascript协议，即在 URL 的位置写入代码，使用这个 URL
 > 原因是 JavaScript 代码可以修改 DOM，所以必须把控制权让给它，否则会导致复杂的线程竞赛的问题。
 > 如果外部脚本加载时间很长（一直无法完成下载），那么浏览器就会一直等待脚本下载完成，造成网页长时间失去响应，浏览器就会呈现“假死”状态，这被称为“阻塞效应”。
 > 解决办法：①将script标签放在网页底部②使用script标签的onload属性
- 
+
 #### 1.2.2 onload属性
 当script标签指定的外部脚本文件下载和解析完成，会触发一个load事件，可以把所需执行的代码，放在这个事件的回调函数里面。
 
@@ -82,7 +82,7 @@ async属性的作用是，使用另一个进程下载脚本，下载时不会阻
  3. Chrome：Blink 引擎 
  4. IE: Trident 引擎
  5. Edge: EdgeHTML 引擎
- 
+
 渲染引擎处理网页，通常分成四个阶段：
  1. 解析代码：HTML 代码解析为 DOM，CSS 代码解析为 CSSOM（CSS Object Model）。
  2. 对象合成：将 DOM 和CSSOM 合成一棵渲染树（render tree）。 

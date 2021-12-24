@@ -44,7 +44,6 @@ export default {
     return {
       categoriesList: [],
       articleList: [],
-
       routerOptions: [
         {
           number: 0,

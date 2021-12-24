@@ -57,3 +57,16 @@ app.get('/articles', function(req, res) {
     res.send(result)
   })
 })
+
+app.get('/blog/:id', function(req, res) {
+  const id = req.params.id
+  const searchSql = 'SELECT * FROM articles WHERE id = ' + id
+  
+  connection.query(searchSql, function (err, result) {
+    if(err) {
+      console.log('[SELECT ERROR] - ',err.message)
+      return
+    }
+    res.send(result)
+  })
+})

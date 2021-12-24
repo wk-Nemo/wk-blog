@@ -8,7 +8,7 @@ import Blog from '@/views/blog'
 const routes = [
   {
     path: '/',
-    redirect: '/home'
+    redirect: '/archives'
   },
   {
     path: '/home',
