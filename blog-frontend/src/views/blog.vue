@@ -72,7 +72,6 @@ export default {
 <style lang="scss" scoped>
 .blog {
   background: url('https://heskeybaozi.github.io/static/images/miku.jpg') 50% center / cover no-repeat fixed rgb(255, 255, 255);
-  background-attachment: fixed;
   display: flex;
   flex-flow: column nowrap;
   .blog-header {
@@ -213,18 +212,53 @@ export default {
   min-width: 200px;
   max-width: 980px;
   margin: 0 auto;
-  padding: 45px;
+  padding: 1rem;
 }
 
 @media (max-width: 575.98px) {
   .blog {
+    /* background: url('https://heskeybaozi.github.io/static/images/miku.jpg') no-repeat center/cover; */
     width: 100%;
+    .blog-header {
+      width: 100%;
+    }
+    .blog-body {
+      width: 100%;
+      .detail-page {
+        .meta {
+          font-size: 0.5rem;
+          .categories {
+            display: none;
+          }
+        }
+      }
+    }
+    .blog-footer {
+      width: 100%;
+    }
   }
 }
 
 @media (max-width: 767.98px) {
   .blog {
     width: 100%;
+    .blog-header {
+      width: 100%;
+    }
+    .blog-body {
+      width: 100%;
+      .detail-page {
+        .meta {
+          font-size: 0.5rem;
+          .categories {
+            display: none;
+          }
+        }
+      }
+    }
+    .blog-footer {
+      width: 100%;
+    }
   }
 }
 </style>
