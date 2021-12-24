@@ -1,9 +1,10 @@
 import axios from 'axios'
+import { ONLINE } from './path'
 
 export default function getBlog (id) {
   return axios({
     method: 'get',
-    url: `http://localhost:8081/blog/${id}`
+    url: ONLINE + `blog/${id}`
   }).then((res) => {
     return res.data
   })
