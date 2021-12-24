@@ -19,7 +19,6 @@ connection.query(sql, function (err, result) {
     return
   }
   console.log(result)
-  res.send(result)
 });
 
 //解决跨域
