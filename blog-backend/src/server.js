@@ -11,7 +11,7 @@ var connection = mysql.createConnection({
 
 connection.connect()
 
-var sql = 'SELECT * FROM categories'
+var sql = 'SELECT * FROM articles'
   
 connection.query(sql, function (err, result) {
   if(err) {
