@@ -11,16 +11,6 @@ var connection = mysql.createConnection({
 
 connection.connect()
 
-var sql = 'SELECT * FROM articles'
-  
-connection.query(sql, function (err, result) {
-  if(err) {
-    console.log('[SELECT ERROR] - ',err.message)
-    return
-  }
-  console.log(result)
-});
-
 //解决跨域
 app.all('*',function (req, res, next) {
   res.header('Access-Control-Allow-Origin', '*');
@@ -33,8 +23,6 @@ app.all('*',function (req, res, next) {
     next();
   }
 });
-
-console.log("success1")
 
 var server = app.listen(81, function () {
  
