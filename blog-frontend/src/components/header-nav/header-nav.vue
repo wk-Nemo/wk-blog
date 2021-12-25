@@ -3,7 +3,7 @@
     <!-- <div class="header-nav" :class="{'header-nav-background': showBackground, 'header-nav-close': closeHeaderNav}"> -->
     <div class="header-nav" v-if="showHeaderNav">
       <div class="header-nav-inner">
-        <div v-if="screenWidthBig" class="header-nav-menu header-nav-menu-top">
+        <div v-if="screenOnPhone" class="header-nav-menu header-nav-menu-top">
           <div class="header-menu-item">
             <div class="icon-wrapper" @click="handleShowList">
               <svg t="1640440200079" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2284" width="20" height="20"><path d="M892.928 128q28.672 0 48.64 19.968t19.968 48.64l0 52.224q0 28.672-19.968 48.64t-48.64 19.968l-759.808 0q-28.672 0-48.64-19.968t-19.968-48.64l0-52.224q0-28.672 19.968-48.64t48.64-19.968l759.808 0zM892.928 448.512q28.672 0 48.64 19.968t19.968 48.64l0 52.224q0 28.672-19.968 48.64t-48.64 19.968l-759.808 0q-28.672 0-48.64-19.968t-19.968-48.64l0-52.224q0-28.672 19.968-48.64t48.64-19.968l759.808 0zM892.928 769.024q28.672 0 48.64 19.968t19.968 48.64l0 52.224q0 28.672-19.968 48.64t-48.64 19.968l-759.808 0q-28.672 0-48.64-19.968t-19.968-48.64l0-52.224q0-28.672 19.968-48.64t48.64-19.968l759.808 0z" p-id="2285" fill="#ffffff"></path></svg>
@@ -86,13 +86,13 @@ export default {
       this.showList = !this.showList
     },
     handleClickMenu () {
-      if (this.screenWidthBig()) {
+      if (this.screenOnPhone) {
         this.showList = false
       }
     }
   },
   computed: {
-    screenWidthBig () {
+    screenOnPhone () {
       return this.screenWidth < 991.98
     }
   },
