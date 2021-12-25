@@ -74,6 +74,7 @@ export default {
   background: url('https://heskeybaozi.github.io/static/images/miku.jpg') 50% center / cover no-repeat fixed rgb(255, 255, 255);
   display: flex;
   flex-flow: column nowrap;
+  min-height: 100vh;
   .blog-header {
     display: flex;
     justify-content: center;
