@@ -1,11 +1,23 @@
 <template>
-  <div>
+  <div class="app">
+    <HeaderNav></HeaderNav>
     <router-view></router-view>
   </div>
 </template>
 
 <script>
+import HeaderNav from '@/components/header-nav/header-nav'
+
 export default {
-  name: 'app'
+  name: 'app',
+  components: {
+    HeaderNav
+  }
 }
 </script>
+
+<style lang="scss" scoped>
+.app {
+  position: relative;
+}
+</style>

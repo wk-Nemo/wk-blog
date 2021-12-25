@@ -1,10 +1,11 @@
 import axios from 'axios'
-import { ONLINE } from './path'
 
 export default function getArticles () {
+  const baseURL = axios.defaults.baseURL
+
   return axios({
     method: 'get',
-    url: ONLINE + 'articles'
+    url: baseURL + 'articles'
   }).then((res) => {
     return res.data
   })

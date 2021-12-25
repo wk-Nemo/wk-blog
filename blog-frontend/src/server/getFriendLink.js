@@ -1,11 +1,11 @@
 import axios from 'axios'
 
-export default function getBlog (id) {
+export default function getFriendLink () {
   const baseURL = axios.defaults.baseURL
 
   return axios({
     method: 'get',
-    url: baseURL + `blog/${id}`
+    url: baseURL + 'friend/友链'
   }).then((res) => {
     return res.data
   })

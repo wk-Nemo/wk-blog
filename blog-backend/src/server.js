@@ -47,8 +47,6 @@ app.get('/categories', function (req, res) {
 })
 
 app.get('/articles', function(req, res) {
-  console.log("success article")
-
   var sql = 'SELECT * FROM articles ORDER BY date DESC'
   
   connection.query(sql, function (err, result) {
@@ -65,6 +63,20 @@ app.get('/blog/:id', function(req, res) {
   const searchSql = 'SELECT * FROM articles WHERE id = ' + id
   
   connection.query(searchSql, function (err, result) {
+    if(err) {
+      console.log('[SELECT ERROR] - ',err.message)
+      return
+    }
+    res.send(result)
+  })
+})
+
+app.get('/friend/:title', function(req, res) {
+  const title = req.params.title
+  const searchSql = 'SELECT * FROM articles WHERE title = ' + '\'' + title + '\''
+  console.log(searchSql)
+  connection.query(searchSql, function (err, result) {
+    console.log(result)
     if(err) {
       console.log('[SELECT ERROR] - ',err.message)
       return
