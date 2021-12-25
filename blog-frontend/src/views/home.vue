@@ -29,8 +29,8 @@ export default {
   width: 100%;
   margin: 0 auto;
   display: flex;
-  height: 100vh;
 }
+
 @media (min-width: 1110px) {
   .container {
     width: 1100px;
