@@ -22,9 +22,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-/* .home {
-  background: url('https://heskeybaozi.github.io/static/images/miku.jpg') 50% center / cover no-repeat fixed rgb(255, 255, 255);
-} */
 .container {
   width: 100%;
   margin: 0 auto;

@@ -160,7 +160,10 @@ export default {
             font-size: 1.5rem;
           }
           .meta {
-            display: none;
+            font-size: 0.5rem;
+            .categories {
+              display: none;
+            }
           }
           .introduce {
             font-size: 1rem;
@@ -175,6 +178,25 @@ export default {
   .home {
     padding: 10px;
     overflow-x: hidden;
+    .home-list {
+      .home-list-item {
+        /* padding: 15px 0; */
+        .item-container {
+          .title {
+            font-size: 1.5rem;
+          }
+          .meta {
+            font-size: 0.5rem;
+            .categories {
+              display: none;
+            }
+          }
+          .introduce {
+            font-size: 1rem;
+          }
+        }
+      }
+    }
   }
 }
 </style>
