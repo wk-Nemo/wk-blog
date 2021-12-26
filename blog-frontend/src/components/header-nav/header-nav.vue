@@ -198,6 +198,7 @@ export default {
       height: 100%;
       line-height: 50px;
       align-items: center;
+      z-index: 10;
       .mode {
         position: relative;
         border: 0;
@@ -316,7 +317,7 @@ export default {
         top: 50px;
         right: 0;
         left: 0;
-        width: 50px;
+        width: auto;
         height: auto;
         background-color: #2d2e30;
         .header-menu-item {
