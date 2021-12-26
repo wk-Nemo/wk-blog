@@ -12,8 +12,15 @@ use vue3 to finish my blog
 - 进入页面后就是首页 √
 - 归档、分类和标签等通过左侧导航栏来实现 √
 
+头部导航
+- 首页
+- 文章
+- 关于
+- 友链 √
+- 模式（黑夜/白昼） √
+
 home页面
-- 列表优化，进行分页处理。
+- 列表优化，进行分页处理
 - 头部导航栏
 
 分类设计
@@ -44,24 +51,48 @@ home页面
 ## 效果预览
 
 ### 1. 首页
-pc端首页:
+**pc端首页:**
 
-![image](https://user-images.githubusercontent.com/62100025/147316281-27587bf1-11be-4555-bcc4-d50afdf6d54b.png)
+- 白昼模式
 
-![image](https://user-images.githubusercontent.com/62100025/147316309-b4a55f94-3061-4604-a2e0-3f90d08835f0.png)
+![image](https://user-images.githubusercontent.com/62100025/147407630-bbc2b567-5f5f-44b2-bdb3-7c05ccfc0279.png)
 
 
-移动端首页：
+- 黑夜模式
 
-![image](https://user-images.githubusercontent.com/62100025/147316335-1b5f74bd-6250-4d79-9625-f325a606a666.png)
+![image](https://user-images.githubusercontent.com/62100025/147407697-2e8b4fe0-002e-4842-8db5-c7a3c9e21619.png)
+
+**移动端首页：**
+
+- 白昼模式
+
+![image](https://user-images.githubusercontent.com/62100025/147407751-85eec55a-57bb-4339-8c30-85cd36403845.png)
+
+- 黑夜模式
+
+![image](https://user-images.githubusercontent.com/62100025/147407765-ebdfb5cf-2dbe-44c3-bb01-f1a346e30218.png)
 
 ### 2. 博客内容
 
 pc端首页:
 
+- 白昼模式
+
 ![image](https://user-images.githubusercontent.com/62100025/147316151-e319e40c-a0bf-418e-914c-8a35ad01e534.png)
+
+- 黑夜模式
+
+![image](https://user-images.githubusercontent.com/62100025/147407814-5c9148d0-a492-4130-8b34-f35472a10de3.png)
+
 
 移动端首页：
 
+- 白昼模式
+
 ![image](https://user-images.githubusercontent.com/62100025/147316178-3de62062-a953-43f8-8ae0-e3e83d82dec6.png)
+
+- 黑夜模式
+
+![image](https://user-images.githubusercontent.com/62100025/147407836-df5d9453-de0e-40af-9064-d0d9ea077aa8.png)
+
 
