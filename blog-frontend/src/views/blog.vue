@@ -54,6 +54,24 @@ export default {
       content: ''
     }
   },
+  watch: {
+    $route: async function (to, from) {
+      const toId = to.params.id
+      const fromId = from.params.id
+
+      if (fromId !== toId) {
+        const data = await getBlog(toId)
+        this.blog = data[0]
+
+        const number = this.blog.content.length
+        const time = Math.floor(number / 150)
+        const date = this.blog.date
+        this.blog.readTime = `${number} 字约 ${time} 分钟`
+        this.blog.date = date.slice(0, 10)
+        this.content = marked.parse(this.blog.content)
+      }
+    }
+  },
   async created () {
     const id = this.$route.params.id
     const data = await getBlog(id)

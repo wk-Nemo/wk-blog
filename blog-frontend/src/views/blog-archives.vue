@@ -26,9 +26,13 @@
           <div class="img-wrapper">
             <img :src="item.imgSrc">
           </div>
-          <p class="introduce">
+          <!-- <p class="introduce">
             {{item.introduce}}
-          </p>
+          </p> -->
+          <article
+            class="introduce markdown-body"
+            v-html="item.introduce"
+          ></article>
        </div>
       </div>
     </div>
@@ -42,6 +46,7 @@
 <script>
 import getArticles from '@/server/getArticles'
 import PageTuner from '@/components/page-turner/page-tuner.vue'
+import { marked } from 'marked'
 
 const PAGE_SIZE = 6
 export default {
@@ -64,8 +69,11 @@ export default {
       const number = this.articleList[i].content.length
       const time = Math.floor(number / 150)
       const date = this.articleList[i].date
+      const introduce = this.articleList[i].introduce
+
       this.articleList[i].readTime = `${number} 字约 ${time} 分钟`
       this.articleList[i].date = date.slice(0, 10)
+      this.articleList[i].introduce = marked.parse(introduce)
     }
 
     this.showArticleList = this.articleList.slice(0, PAGE_SIZE)
@@ -146,6 +154,14 @@ export default {
       }
     }
   }
+}
+
+.markdown-body {
+  box-sizing: border-box;
+  min-width: 200px;
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 1rem;
 }
 
 @media (max-width: 575.98px) {

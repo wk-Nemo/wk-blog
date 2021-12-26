@@ -119,7 +119,7 @@ function getMsg(data) {
     if (introduceStart) {
         articleIntroduce = getData(articleMsg, introduceStart.index + 11)
     } else {
-        articleIntroduce = articleContent.slice(0, 150)
+        articleIntroduce = articleContent.slice(0, 50)
     }
 
     return {
