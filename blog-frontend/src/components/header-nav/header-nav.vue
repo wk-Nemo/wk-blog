@@ -74,7 +74,12 @@ export default {
   methods: {
     onScroll () {
       this.scrollTop = document.documentElement.scrollTop || document.body.scrollTop
-      this.showHeaderNav = !(this.scrollTop > 0)
+      if (this.scrollTop > 0) {
+        this.showHeaderNav = false
+        this.showList = false
+      } else {
+        this.showHeaderNav = true
+      }
     },
     onResize () {
       this.screenWidth = document.body.clientWidth
@@ -112,7 +117,7 @@ export default {
 <style lang="scss" scoped>
 .header-nav {
   position: fixed;
-  z-index: 1;
+  z-index: 2;
   top: 0;
   left: 0;
   width: 100%;
