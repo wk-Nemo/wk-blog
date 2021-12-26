@@ -1,7 +1,7 @@
 ---
 title: 秋招保驾护航——vue篇
 date: 2021-09-07 09:21:30
-categories: 前端框架
+categories: Vue
 tags: 面试
 ---
 秋招保驾护航系列文章正在持续更新，往期文章如下，需者自取：

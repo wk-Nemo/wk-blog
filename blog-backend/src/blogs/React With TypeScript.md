@@ -1,7 +1,7 @@
 ---
 title: React With TypeScript
 date: 2021-10-04 13:41:31
-tags:
+categories: React
 ---
 ## npx安装react + ts环境
 

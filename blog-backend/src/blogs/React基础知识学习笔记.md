@@ -1,7 +1,7 @@
 ---
 title: React基础知识学习笔记
 date: 2021-04-28 10:50:21
-categories: 前端框架
+categories: React
 ---
 
 # 第一章 课程简介
