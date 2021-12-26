@@ -44,7 +44,8 @@
 <script>
 import getBlog from '@/server/getBlog'
 import { marked } from 'marked'
-import 'github-markdown-css/github-markdown.css'
+// import 'github-markdown-css/github-markdown.css'
+// import 'github-markdown-css/github-markdown-dark.css'
 
 export default {
   name: 'blog',
@@ -70,6 +71,13 @@ export default {
         this.blog.date = date.slice(0, 10)
         this.content = marked.parse(this.blog.content)
       }
+    },
+    darkMode: function (val) {
+      if (val) {
+        require('github-markdown-css/github-markdown-dark.css')
+      } else {
+        require('github-markdown-css/github-markdown.css')
+      }
     }
   },
   computed: {
@@ -88,6 +96,13 @@ export default {
     this.blog.readTime = `${number} 字约 ${time} 分钟`
     this.blog.date = date.slice(0, 10)
     this.content = marked.parse(this.blog.content)
+  },
+  mounted () {
+    if (this.darkMode) {
+      require('github-markdown-css/github-markdown-dark.css')
+    } else {
+      require('github-markdown-css/github-markdown.css')
+    }
   }
 }
 </script>
@@ -258,17 +273,16 @@ export default {
       background-color: rgb(44, 50, 60);
       color: white;
       pre {
-        color: black;
-        background-color: rgb(31, 34, 39) !important;
+        background-color: #24292f;
       }
     }
-    .markdown-body .highlight pre, .markdown-body pre {
+    .markdown-body pre {
       background-color: rgb(31, 34, 39) !important;
     }
   }
   .blog-footer .lite-footer .back {
     background: url('https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fpic3-nc.pocoimg.cn%2Fimage%2Fpoco%2Fworks%2F10%2F2020%2F0903%2F00%2F15990627524040719_201497536_H1920.jpg&refer=http%3A%2F%2Fpic3-nc.pocoimg.cn&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1643081810&t=58ec63178a3be86d4cf0095492de143a') 50% center / cover no-repeat fixed rgb(255, 255, 255);
-}
+  }
 }
 
 @media (max-width: 575.98px) {
