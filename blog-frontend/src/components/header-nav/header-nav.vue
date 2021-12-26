@@ -129,6 +129,7 @@ export default {
     .header-nav-menu-top {
       top: 0 !important;
       background: none !important;
+      height: 50px !important;
       .header-menu-item:hover {
         background: none !important;
       }
@@ -148,9 +149,14 @@ export default {
         display: flex;
         align-content: center;
         justify-content: center;
-        .icon {
-          height: 100%;
+        .icon-wrapper {
+          display: flex;
+          justify-content: center;
+          align-items: center;
           margin-right: 5px;
+          .icon {
+            /* height: 100%; */
+          }
         }
         .item-content {
           height: 100%;
