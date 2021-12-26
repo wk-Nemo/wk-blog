@@ -45,6 +45,7 @@
 import getBlog from '@/server/getBlog'
 import { marked } from 'marked'
 // import 'github-markdown-css/github-markdown.css'
+import '@/assets/scss/github-markdown.css'
 // import 'github-markdown-css/github-markdown-dark.css'
 
 export default {
@@ -71,14 +72,14 @@ export default {
         this.blog.date = date.slice(0, 10)
         this.content = marked.parse(this.blog.content)
       }
-    },
-    darkMode: function (newVal, oldVal) {
-      if (newVal) {
-        require('@/assets/scss/github-markdown-dark.css')
-      } else {
-        require('@/assets/scss/github-markdown-light.css')
-      }
     }
+    // darkMode: function (newVal, oldVal) {
+    //   if (newVal) {
+    //     require('@/assets/scss/github-markdown-dark.css')
+    //   } else {
+    //     require('@/assets/scss/github-markdown-light.css')
+    //   }
+    // }
   },
   computed: {
     darkMode () {
@@ -96,14 +97,14 @@ export default {
     this.blog.readTime = `${number} 字约 ${time} 分钟`
     this.blog.date = date.slice(0, 10)
     this.content = marked.parse(this.blog.content)
-  },
-  mounted () {
-    if (this.darkMode) {
-      require('@/assets/scss/github-markdown-dark.css')
-    } else {
-      require('@/assets/scss/github-markdown-light.css')
-    }
   }
+  // mounted () {
+  //   if (this.darkMode) {
+  //     require('@/assets/scss/github-markdown-dark.css')
+  //   } else {
+  //     require('@/assets/scss/github-markdown-light.css')
+  //   }
+  // }
 }
 </script>
 
@@ -246,14 +247,6 @@ export default {
   }
 }
 
-.markdown-body {
-  box-sizing: border-box;
-  min-width: 200px;
-  max-width: 980px;
-  margin: 0 auto;
-  padding: 1rem;
-}
-
 .dark {
   background: url('https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fpic3-nc.pocoimg.cn%2Fimage%2Fpoco%2Fworks%2F10%2F2020%2F0903%2F00%2F15990627524040719_201497536_H1920.jpg&refer=http%3A%2F%2Fpic3-nc.pocoimg.cn&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1643081810&t=58ec63178a3be86d4cf0095492de143a') 50% center / cover no-repeat fixed rgb(255, 255, 255);
   .blog-header .lite-header .back {
@@ -272,6 +265,7 @@ export default {
     .markdown-body {
       background-color: rgb(44, 50, 60);
       color: white;
+      color-scheme: dark;
       pre {
         background-color: #24292f !important;
       }
