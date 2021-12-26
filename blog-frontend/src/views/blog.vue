@@ -74,9 +74,9 @@ export default {
     },
     darkMode: function (val) {
       if (val) {
-        require('github-markdown-css/github-markdown-dark.css')
+        require('@/assets/scss/github-markdown-dark.css')
       } else {
-        require('github-markdown-css/github-markdown.css')
+        require('@/assets/scss/github-markdown.css')
       }
     }
   },
