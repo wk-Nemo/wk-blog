@@ -27,6 +27,7 @@
         </div>
         <article
           class="detail-content markdown-body"
+          :class="markdownMode"
           v-html="content"
         ></article>
       </div>
@@ -44,9 +45,7 @@
 <script>
 import getBlog from '@/server/getBlog'
 import { marked } from 'marked'
-// import 'github-markdown-css/github-markdown.css'
 import '@/assets/scss/github-markdown.css'
-// import 'github-markdown-css/github-markdown-dark.css'
 
 export default {
   name: 'blog',
@@ -73,17 +72,13 @@ export default {
         this.content = marked.parse(this.blog.content)
       }
     }
-    // darkMode: function (newVal, oldVal) {
-    //   if (newVal) {
-    //     require('@/assets/scss/github-markdown-dark.css')
-    //   } else {
-    //     require('@/assets/scss/github-markdown-light.css')
-    //   }
-    // }
   },
   computed: {
     darkMode () {
       return this.$store.state.mode
+    },
+    markdownMode () {
+      return this.darkMode ? 'markdown-dark' : 'markdown-light'
     }
   },
   async created () {
@@ -98,13 +93,6 @@ export default {
     this.blog.date = date.slice(0, 10)
     this.content = marked.parse(this.blog.content)
   }
-  // mounted () {
-  //   if (this.darkMode) {
-  //     require('@/assets/scss/github-markdown-dark.css')
-  //   } else {
-  //     require('@/assets/scss/github-markdown-light.css')
-  //   }
-  // }
 }
 </script>
 
