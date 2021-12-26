@@ -74,9 +74,7 @@ app.get('/blog/:id', function(req, res) {
 app.get('/friend/:title', function(req, res) {
   const title = req.params.title
   const searchSql = 'SELECT * FROM articles WHERE title = ' + '\'' + title + '\''
-  console.log(searchSql)
   connection.query(searchSql, function (err, result) {
-    console.log(result)
     if(err) {
       console.log('[SELECT ERROR] - ',err.message)
       return
