@@ -1,6 +1,5 @@
 <template>
   <transition name="fade">
-    <!-- <div class="header-nav" :class="{'header-nav-background': showBackground, 'header-nav-close': closeHeaderNav}"> -->
     <div class="header-nav" v-if="showHeaderNav">
       <div class="header-nav-inner">
         <div v-if="screenOnPhone" class="header-nav-menu header-nav-menu-top">
@@ -52,6 +51,19 @@
             </router-link>
           </div>
         </transition>
+        <div class="header-nav-mode">
+          <div class="mode">
+            <div class="mode-track">
+              <span class="mode-track-moon"></span>
+              <span class="mode-track-sun"></span>
+              <div
+                class="mode-thumb"
+                @click="changeMode"
+                :class="modeClass"
+              ></div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </transition>
@@ -74,11 +86,10 @@ export default {
   methods: {
     onScroll () {
       this.scrollTop = document.documentElement.scrollTop || document.body.scrollTop
-      if (this.scrollTop > 0) {
-        this.showHeaderNav = false
+      this.showHeaderNav = !(this.scrollTop > 0)
+
+      if (this.screenOnPhone && this.scrollTop > 0) {
         this.showList = false
-      } else {
-        this.showHeaderNav = true
       }
     },
     onResize () {
@@ -94,11 +105,18 @@ export default {
       if (this.screenOnPhone) {
         this.showList = false
       }
+    },
+    changeMode () {
+      const mode = this.$store.state.mode
+      this.$store.commit('setMode', !mode)
     }
   },
   computed: {
     screenOnPhone () {
       return this.screenWidth < 991.98
+    },
+    modeClass () {
+      return this.$store.state.mode ? 'mode-thumb-right' : 'mode-thumb-left'
     }
   },
   async created () {
@@ -126,6 +144,7 @@ export default {
     margin: 0 auto;
     padding: 0 20px;
     height: 100%;
+    display: flex;
     .header-nav-menu-top {
       top: 0 !important;
       background: none !important;
@@ -169,6 +188,81 @@ export default {
       .header-menu-item:hover {
         color: #f4f5f5;
         background-color: #999;
+      }
+    }
+    .header-nav-mode {
+      align-self: end;
+      display: flex;
+      padding: 0 0.5rem;
+      margin-left: auto;
+      height: 100%;
+      line-height: 50px;
+      align-items: center;
+      .mode {
+        position: relative;
+        border: 0;
+        padding: 0;
+        line-height: 100%;
+        background-color: transparent;
+        cursor: pointer;
+        user-select: none;
+        .mode-track {
+          border-radius: 30px;
+          width: 50px;
+          height: 24px;
+          font-size: 0;
+          background-color: #8c8a8a;
+          .mode-track-moon, .mode-track-sun {
+            display: inline-block;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 25px;
+            height: 100%;
+            font-size: 14px;
+          }
+          .mode-track-moon {
+            left: 0;
+          }
+          .mode-track-sun {
+            right: 0;
+          }
+          .mode-track-moon::before, .mode-track-sun::before {
+            display: block;
+            width: 100%;
+            height: 100%;
+            font-size: 14px;
+            line-height: 24px;
+            text-align: center;
+          }
+          .mode-track-moon::before {
+            content: '🌜';
+          }
+          .mode-track-sun::before {
+            content: '🌞';
+          }
+          .mode-thumb {
+            position: absolute;
+            top: 1px;
+            box-shadow: 0 0 2px 3px #0099e0;
+            box-sizing: border-box;
+            border: 1px solid #4d4d4d;
+            border-radius: 50%;
+            width: 22px;
+            height: 22px;
+            background-color: #fafafa;
+            transition: transform 0.2s ease;
+          }
+          .mode-thumb-left {
+            left: 1px;
+          }
+          .mode-thumb-right {
+            right: 1px;
+          }
+        }
+      }
+      .mode:focus .mode-thumb {
+        box-shadow: 0 0 2px 3px #0099e0;
       }
     }
   }
@@ -222,7 +316,7 @@ export default {
         top: 50px;
         right: 0;
         left: 0;
-        width: auto;
+        width: 50px;
         height: auto;
         background-color: #2d2e30;
         .header-menu-item {

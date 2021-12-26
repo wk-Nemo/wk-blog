@@ -1,5 +1,5 @@
 <template>
-  <div class="blog">
+  <div class="blog" :class="{'dark': darkMode}">
     <div class="blog-header">
       <div class="lite-header">
         <img class="avatar" src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3390826808,1281238612&fm=26&gp=0.jpg" alt="">
@@ -70,6 +70,11 @@ export default {
         this.blog.date = date.slice(0, 10)
         this.content = marked.parse(this.blog.content)
       }
+    }
+  },
+  computed: {
+    darkMode () {
+      return this.$store.state.mode
     }
   },
   async created () {
@@ -232,6 +237,27 @@ export default {
   max-width: 980px;
   margin: 0 auto;
   padding: 1rem;
+}
+
+.dark {
+  .blog-body {
+    background: rgb(44, 50, 60);
+    .detail-page {
+      .title {
+        color: white;
+      }
+      .meta {
+        color: #fff;
+      }
+    }
+    .markdown-body {
+      background: rgb(44, 50, 60);
+      color: white;
+      pre {
+        background: rgb(44, 50, 60);
+      }
+    }
+  }
 }
 
 @media (max-width: 575.98px) {

@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="home" :class="{'dark': darkMode}">
     <Header></Header>
     <div class="container">
       <MyMessage></MyMessage>
@@ -17,6 +17,11 @@ export default {
   components: {
     Header,
     MyMessage
+  },
+  computed: {
+    darkMode () {
+      return this.$store.state.mode
+    }
   }
 }
 </script>
@@ -26,6 +31,10 @@ export default {
   width: 100%;
   margin: 0 auto;
   display: flex;
+}
+
+.dark {
+  background: rgb(68,73,80);
 }
 
 @media (min-width: 1110px) {

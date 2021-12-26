@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="home" :class="{'dark': darkMode}">
     <div class="home-list">
       <div
         v-for="item in showArticleList"
@@ -83,6 +83,11 @@ export default {
       this.pageList.push(i)
     }
   },
+  computed: {
+    darkMode () {
+      return this.$store.state.mode
+    }
+  },
   methods: {
     handleBlog (article) {
       this.$router.push(`/blog/${article.id}`)
@@ -162,6 +167,38 @@ export default {
   max-width: 980px;
   margin: 0 auto;
   padding: 1rem;
+}
+
+.dark {
+  .home {
+    .home-list {
+      .home-list-item {
+        background: rgb(44, 50, 60);
+        .item-container {
+          .title {
+            color: white;
+          }
+          .meta {
+            color: white;
+            .meta-item {
+              .mate-item-content {
+              }
+            }
+          }
+          .img-wrapper {
+            img {
+            }
+          }
+          .introduce {
+          }
+          .markdown-body {
+            background: none;
+            color: white;
+          }
+        }
+      }
+    }
+  }
 }
 
 @media (max-width: 575.98px) {
