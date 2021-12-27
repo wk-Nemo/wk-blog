@@ -1,5 +1,5 @@
 <template>
-  <div class="home" :class="{'dark': darkMode}">
+  <div ref="homeRef" class="home" :class="{'dark': darkMode}">
     <div class="home-list">
       <div
         v-for="item in showArticleList"
@@ -46,6 +46,7 @@
 <script>
 import getArticles from '@/server/getArticles'
 import PageTuner from '@/components/page-turner/page-tuner.vue'
+import { ref } from 'vue'
 import { marked } from 'marked'
 
 const PAGE_SIZE = 6
@@ -59,6 +60,13 @@ export default {
       articleList: [],
       showArticleList: [],
       pageList: []
+    }
+  },
+  setup () {
+    const homeRef = ref(null)
+
+    return {
+      homeRef
     }
   },
   async created () {
@@ -94,6 +102,10 @@ export default {
     },
     changePage (page) {
       this.showArticleList = this.articleList.slice(page * PAGE_SIZE, (page + 1) * PAGE_SIZE)
+      // 回到顶部
+      const height = this.homeRef.offsetTop
+      document.documentElement.scrollTop = height
+      document.body.scrollTop = height
     }
   }
 }
