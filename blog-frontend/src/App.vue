@@ -19,5 +19,6 @@ export default {
 <style lang="scss" scoped>
 .app {
   position: relative;
+  -webkit-overflow-scrolling: touch;
 }
 </style>
