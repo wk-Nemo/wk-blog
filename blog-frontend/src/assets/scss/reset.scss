@@ -33,9 +33,7 @@ html {
   display: block;
   height: 100%;
   font-size: 15.8px;
-  overflow-y: scroll;
-  -webkit-overflow-scrolling: touch;
-  // scroll-behavior: smooth;
+  scroll-behavior: smooth;
   // -webkit-overflow-scrolling: touch;
 }
 

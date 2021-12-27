@@ -116,6 +116,7 @@ export default {
 .home {
   width: 100%;
   padding: 1rem;
+  -webkit-overflow-scrolling: touch;
   .home-list {
     width: 100%;
     /* padding: 1rem; */
