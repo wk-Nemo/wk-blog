@@ -21,7 +21,9 @@ use vue3 to finish my blog
 
 home页面
 - 列表优化，进行分页处理
-- 头部导航栏
+- 翻页到达顶部
+  - windows √
+  - ios
 
 内部导航球
 - 内容阅读
