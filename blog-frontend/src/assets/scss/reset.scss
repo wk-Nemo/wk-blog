@@ -42,6 +42,7 @@ body {
   background: $color-background;
   height: 100%;
   font-family: 'Josefin Sans','PingFang SC';
+  scroll-behavior: smooth;
 }
 
 blockquote, q {
@@ -72,8 +73,4 @@ li {
 body {
   -webkit-text-size-adjust: none;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-}
-
-#app {
-  -webkit-overflow-scrolling: touch;
 }
