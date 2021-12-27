@@ -103,9 +103,10 @@ export default {
     changePage (page) {
       this.showArticleList = this.articleList.slice(page * PAGE_SIZE, (page + 1) * PAGE_SIZE)
       // 回到顶部
-      const height = this.homeRef.offsetTop
-      document.documentElement.scrollTop = height
-      document.body.scrollTop = height
+      // const height = this.homeRef.offsetTop
+      // document.documentElement.scrollTop = height
+      // document.body.scrollTop = height
+      this.homeRef.scrollIntoView({ block: 'start', behavior: 'smooth' })
     }
   }
 }
