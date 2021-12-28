@@ -1,6 +1,7 @@
 var express = require('express');
 var app = express();
 var mysql = require('mysql');
+var util = require('./util')
 
 var connection = mysql.createConnection({
   host     : 'localhost',
@@ -54,7 +55,8 @@ app.get('/categoriesBlog/:category', function (req, res) {
       console.log('[SELECT ERROR] - ',err.message)
       return
     }
-    res.send(result)
+    const list = util.handleArticleList(result)
+    res.send(list)
   })
 })
 
@@ -66,7 +68,9 @@ app.get('/articles', function(req, res) {
       console.log('[SELECT ERROR] - ',err.message)
       return
     }
-    res.send(result)
+    
+    const list = util.handleArticleList(result)
+    res.send(list)
   })
 })
 
