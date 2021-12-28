@@ -200,7 +200,7 @@ export default {
 
 @media (max-width: 575.98px) {
   .blog-list-container {
-    padding: 10px;
+    /* padding: 10px; */
     overflow-x: hidden;
     .blog-list {
       .blog-list-item {
@@ -225,7 +225,7 @@ export default {
 
 @media (max-width: 767.98px) {
   .blog-list-container {
-    padding: 10px;
+    /* padding: 10px; */
     overflow-x: hidden;
     .blog-list {
       .blog-list-item {

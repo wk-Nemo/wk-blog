@@ -24,6 +24,7 @@ export default {
 
 <style lang="scss" scoped>
 .blog-archives {
-  padding: 1rem 1rem;
+  width: 100%;
+  padding: 1rem;
 }
 </style>
