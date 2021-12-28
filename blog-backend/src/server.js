@@ -46,6 +46,18 @@ app.get('/categories', function (req, res) {
 
 })
 
+app.get('/categoriesBlog/:category', function (req, res) {
+  const category = req.params.category
+  const searchSql = 'SELECT * FROM articles WHERE categories = ' + '\'' + category + '\''
+  connection.query(searchSql, function (err, result) {
+    if(err) {
+      console.log('[SELECT ERROR] - ',err.message)
+      return
+    }
+    res.send(result)
+  })
+})
+
 app.get('/articles', function(req, res) {
   var sql = 'SELECT * FROM articles ORDER BY date DESC'
   

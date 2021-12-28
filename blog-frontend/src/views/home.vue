@@ -11,6 +11,8 @@
 <script>
 import Header from '@/components/header/header'
 import MyMessage from '@/components/my-message/my-message'
+import getArticles from '@/server/getArticles'
+import { marked } from 'marked'
 
 export default {
   name: 'home',
@@ -22,6 +24,23 @@ export default {
     darkMode () {
       return this.$store.state.mode
     }
+  },
+  async created () {
+    const articleList = await getArticles()
+    const articleListLen = articleList.length
+
+    for (let i = 0; i < articleListLen; i++) {
+      const number = articleList[i].content.length
+      const time = Math.floor(number / 150)
+      const date = articleList[i].date
+      const introduce = articleList[i].introduce
+
+      articleList[i].readTime = `${number} 字约 ${time} 分钟`
+      articleList[i].date = date.slice(0, 10)
+      articleList[i].introduce = marked.parse(introduce)
+    }
+
+    this.$store.commit('setArticleList', articleList)
   }
 }
 </script>

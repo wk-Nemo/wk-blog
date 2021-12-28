@@ -1,6 +1,5 @@
 <template>
   <div class="blog-categories">
-    blog-categories
   </div>
 </template>
 
@@ -9,3 +8,6 @@ export default {
   name: 'blog-categories'
 }
 </script>
+
+<style lang="scss" scoped>
+</style>

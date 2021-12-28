@@ -10,28 +10,44 @@ var connection = mysql.createConnection({
 })
 connection.connect()
 
-// 清空表格
-const emptySql = 'TRUNCATE TABLE articles'
-connection.query(emptySql, function (err, result) {
-    if (err) {
-        console.log('[INSERT ERROR] - ', err.message)
-        return
-    }
-})
+function parse() {
+    // 清空表格
+    const emptyBlogSql = 'TRUNCATE TABLE articles'
+    connection.query(emptyBlogSql, function (err) {
+        if (err) {
+            console.log('[INSERT ERROR] - ', err.message)
+            return
+        }
+    })
 
+    const emptyCategoriesSql = 'TRUNCATE TABLE categories'
+    connection.query(emptyCategoriesSql, function (err) {
+        if (err) {
+            console.log('[INSERT ERROR] - ', err.message)
+            return
+        }
+    })
 
-const root = path.join(__dirname, 'blogs')
-fs.readdir(root, function (err, files) {
-    if (err) {
-        return console.error(err);
-    }
-
-    files.forEach(function (filename) {
-        const filePath = path.join(root, filename)
+    // 读取blogs
+    const rootBlogs = path.join(__dirname, 'blogs')
+    const blogs = fs.readdirSync(rootBlogs)
+    blogs.forEach(function (filename) {
+        const filePath = path.join(rootBlogs, filename)
         parseMDSync(filePath)
     })
+
+    // 读取categories
+    const rootCategories = path.join(__dirname, 'categories')
+    const categories = fs.readdirSync(rootCategories)
+    categories.forEach(function (filename) {
+        const filePath = path.join(rootCategories, filename)
+        parseCategoriesSync(filePath)
+    })
+
+    // 关闭数据库
     connection.end()
-});
+}
+
 
 function parseMD(path) {
     fs.readFile(path, function (err, data) {
@@ -71,6 +87,21 @@ function parseMDSync(path) {
 
     const insertSql = 'INSERT INTO articles (title, categories, date, imgSrc, introduce, content) VALUES(?,?,?,?,?,?) '
     const insertParams = [articleTitle, articleCategories, articleDate, articleImgSrc, articleIntroduce, articleContent]
+    connection.query(insertSql, insertParams, function (err) {
+        if (err) {
+            console.log('[INSERT ERROR] - ', err.message)
+            return
+        }
+    })
+}
+
+function parseCategoriesSync(path) {
+    const data = fs.readFileSync(path)
+    const Msg = getMsg(data)
+    let articleCategories = Msg.articleCategories
+
+    const insertSql = 'INSERT INTO categories (name) VALUES(?) '
+    const insertParams = [articleCategories]
     connection.query(insertSql, insertParams, function (err) {
         if (err) {
             console.log('[INSERT ERROR] - ', err.message)
@@ -143,3 +174,4 @@ function getData(str, start) {
     return str.slice(start, end)
 }
 
+parse()

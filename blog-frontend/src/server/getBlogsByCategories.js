@@ -1,11 +1,11 @@
 import axios from 'axios'
 
-export default function getCategories () {
+export default function getBlogsByCategories (category) {
   const baseURL = axios.defaults.baseURL
 
   return axios({
     method: 'get',
-    url: baseURL + 'categories'
+    url: baseURL + `categoriesBlog/${category}`
   }).then((res) => {
     return res.data
   })

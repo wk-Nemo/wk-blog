@@ -1,7 +1,8 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 import Home from '@/views/home'
 import BlogArchives from '@/views/blog-archives'
-import BlogCategories from '@/views/blog-categories'
+import Categories from '@/views/categories'
+import BlogList from '@/components/blog-list/blog-list'
 import BlogTag from '@/views/blog-tag'
 import Blog from '@/views/blog'
 
@@ -20,7 +21,13 @@ const routes = [
       },
       {
         path: '/categories',
-        component: BlogCategories
+        component: Categories,
+        children: [
+          {
+            path: '/:category',
+            component: BlogList
+          }
+        ]
       },
       {
         path: '/tags',
