@@ -3,7 +3,8 @@ import { createStore } from 'vuex'
 export default createStore({
   state: {
     mode: false,
-    articleList: []
+    articleList: [],
+    categoriesList: []
   },
   mutations: {
     setMode (state, mode) {
@@ -11,6 +12,9 @@ export default createStore({
     },
     setArticleList (state, list) {
       state.articleList = list
+    },
+    setCategoriesList (state, list) {
+      state.categoriesList = list
     }
   },
   actions: {

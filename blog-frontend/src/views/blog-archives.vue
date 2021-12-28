@@ -1,8 +1,9 @@
 <template>
-  <blog-list
-    :articleList="articleList"
-    :pageList="pageList"
-  ></blog-list>
+  <div class="blog-archives">
+    <blog-list
+      :articleList="articleList"
+    ></blog-list>
+  </div>
 </template>
 
 <script>
@@ -20,3 +21,9 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.blog-archives {
+  padding: 1rem 1rem;
+}
+</style>

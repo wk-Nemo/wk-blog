@@ -12,6 +12,7 @@
 import Header from '@/components/header/header'
 import MyMessage from '@/components/my-message/my-message'
 import getArticles from '@/server/getArticles'
+import getCategories from '@/server/getCategories'
 import { marked } from 'marked'
 
 export default {
@@ -41,6 +42,9 @@ export default {
     }
 
     this.$store.commit('setArticleList', articleList)
+
+    const categoriesList = await getCategories()
+    this.$store.commit('setCategoriesList', categoriesList)
   }
 }
 </script>

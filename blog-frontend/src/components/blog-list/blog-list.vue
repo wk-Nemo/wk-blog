@@ -102,8 +102,8 @@ export default {
 
 <style lang="scss" scoped>
 .blog-list-container {
-  width: 100%;
-  padding: 1rem;
+  /* width: 100%; */
+  /* padding: 1rem; */
   .blog-list {
     width: 100%;
     .blog-list-item {

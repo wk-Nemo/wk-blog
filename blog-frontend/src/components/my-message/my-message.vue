@@ -33,25 +33,6 @@ export default {
   name: 'my-message',
   data () {
     return {
-      categoriesList: [],
-      articleList: [],
-      routerOptions: [
-        {
-          number: 0,
-          name: '归档',
-          path: '/archives'
-        },
-        {
-          number: 0,
-          name: '分类',
-          path: '/categories'
-        },
-        {
-          number: 5,
-          name: '标签',
-          path: '/tags'
-        }
-      ],
       selectedOption: ''
     }
   },
@@ -63,6 +44,31 @@ export default {
   computed: {
     darkMode () {
       return this.$store.state.mode
+    },
+    articleListLen () {
+      return this.$store.state.articleList.length
+    },
+    categoriesListLen () {
+      return this.$store.state.categoriesList.length
+    },
+    routerOptions () {
+      return [
+        {
+          number: this.articleListLen,
+          name: '归档',
+          path: '/archives'
+        },
+        {
+          number: this.categoriesListLen,
+          name: '分类',
+          path: '/categories'
+        },
+        {
+          number: 5,
+          name: '标签',
+          path: '/tags'
+        }
+      ]
     }
   },
   async created () {
