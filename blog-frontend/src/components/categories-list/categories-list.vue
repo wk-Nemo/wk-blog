@@ -15,7 +15,6 @@
 </template>
 
 <script>
-
 export default {
   name: 'blog-categories',
   props: {
@@ -28,7 +27,7 @@ export default {
   },
   methods: {
     toCategory (name) {
-      this.$router.push(`/${name}`)
+      this.$router.push(`/categories/${name}`)
     }
   }
 }

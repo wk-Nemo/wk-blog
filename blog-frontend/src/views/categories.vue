@@ -3,7 +3,7 @@
     <categories-list
       :categoriesList="categoriesList"
     ></categories-list>
-    <router-view></router-view>
+    <router-view />
   </div>
 </template>
 

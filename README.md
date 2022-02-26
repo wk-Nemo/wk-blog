@@ -17,7 +17,7 @@ use vue3 to finish my blog
 - 文章
 - 关于
 - 友链 √
-- 模式（黑夜/白昼） √
+- 模式（黑夜/白昼）
 
 home页面
 - 列表优化，进行分页处理
@@ -99,5 +99,4 @@ pc端首页:
 - 黑夜模式
 
 ![image](https://user-images.githubusercontent.com/62100025/147407836-df5d9453-de0e-40af-9064-d0d9ea077aa8.png)
-
 

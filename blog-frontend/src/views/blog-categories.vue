@@ -1,7 +1,7 @@
 <template>
-  <blog-list
-    :article-list="articleList"
-  ></blog-list>
+  <div>
+    <blog-list :article-list="articleList"/>
+  </div>
 </template>
 
 <script>

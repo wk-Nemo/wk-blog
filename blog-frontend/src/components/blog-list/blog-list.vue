@@ -1,5 +1,5 @@
 <template>
-  <div ref="homeRef" class="blog-list-container" :class="{'dark': darkMode}">
+  <div ref="homeRef" class="blog-list-container animate__animated animate__fadeInUp" :class="{'dark': darkMode}">
     <div class="blog-list">
       <div
         v-for="item in showArticleList"
@@ -20,10 +20,9 @@
 </template>
 
 <script>
-import PageTuner from '@/components/page-turner/page-tuner.vue'
+import PageTuner from './page-turner/page-tuner.vue'
 import BlogIntroduce from '@/components/blog-introduce/blog-introduce.vue'
 import { ref } from 'vue'
-// import { marked } from 'marked'
 
 const PAGE_SIZE = 6
 export default {
@@ -39,6 +38,13 @@ export default {
         return []
       }
     }
+  },
+  created () {
+    this.$watch(
+      () => this.$route.params,
+      (toParams, previousParams) => {
+      }
+    )
   },
   data () {
     return {
