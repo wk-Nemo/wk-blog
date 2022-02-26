@@ -2,13 +2,13 @@
   <div ref="homeRef" class="blog-list-container animate__animated animate__fadeInUp" :class="{'dark': darkMode}">
     <div class="blog-list">
       <div
-        v-for="item in showArticleList"
+        v-for="(item, index) in showArticleList"
         :key="item.id"
         @click="handleBlog(item)"
       >
         <blog-introduce
           :article="item"
-          :showImgRight="item.id % 2 === 0"
+          :showImgRight="index % 2 === 0"
         ></blog-introduce>
       </div>
     </div>

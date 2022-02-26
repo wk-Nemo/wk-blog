@@ -11,8 +11,8 @@
 <script>
 import Header from '@/components/header/header'
 import MyMessage from '@/components/my-message/my-message'
-import getArticles from '@/server/getArticles'
-import getCategories from '@/server/getCategories'
+import getArticleList from '@/server/getArticleList'
+import getCategoryList from '@/server/getCategoryList'
 
 export default {
   name: 'home',
@@ -26,10 +26,10 @@ export default {
     }
   },
   async created () {
-    const articleList = await getArticles()
+    const articleList = await getArticleList()
     this.$store.commit('setArticleList', articleList)
 
-    const categoriesList = await getCategories()
+    const categoriesList = await getCategoryList()
     this.$store.commit('setCategoriesList', categoriesList)
   }
 }
