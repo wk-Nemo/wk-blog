@@ -1,11 +1,11 @@
 <template>
-  <div class="header" :class="{'dark': darkMode}">
+  <div class="header animate__animated animate__fadeInDown" :class="{'dark': darkMode}">
     <div class="header-banner">
       <div class="header-banner-info">
-        <div class="header-banner-info-title">
+        <div class="header-banner-info-title animate__animated animate__fadeIn animate__delay">
           TortoiseWu's Blog
         </div>
-        <div class="header-banner-info-subtitle">
+        <div class="header-banner-info-subtitle animate__animated animate__fadeIn animate__delay-1s">
           认真做好每一件事
         </div>
       </div>
@@ -29,7 +29,7 @@ export default {
   width: 100%;
   font-size: 18px;
   background-color: #2d2e30;
-  height: 45rem;
+  height: 100vh;
   .header-banner {
     position: relative;
     z-index: 0;

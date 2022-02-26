@@ -1,8 +1,8 @@
 <template>
   <div class="home" :class="{'dark': darkMode}">
     <Header></Header>
-    <div class="container">
-      <MyMessage></MyMessage>
+    <div class="container animate__animated animate__fadeInUp">
+      <my-message></my-message>
       <router-view></router-view>
     </div>
   </div>
@@ -43,7 +43,7 @@ export default {
 }
 
 .home {
-  background: url(https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fwx4.sinaimg.cn%2Flarge%2F006NrdrIgy1fvw0ilspmuj31hc0u0nkt.jpg&refer=http%3A%2F%2Fwx4.sinaimg.cn&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1643082593&t=1c83495d70d5212334b683cca421b7d8) 50% center / cover no-repeat fixed rgb(255, 255, 255);
+  /* background: url(https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fwx4.sinaimg.cn%2Flarge%2F006NrdrIgy1fvw0ilspmuj31hc0u0nkt.jpg&refer=http%3A%2F%2Fwx4.sinaimg.cn&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1643082593&t=1c83495d70d5212334b683cca421b7d8) 50% center / cover no-repeat fixed rgb(255, 255, 255); */
 }
 
 .dark {

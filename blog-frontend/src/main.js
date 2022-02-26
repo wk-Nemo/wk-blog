@@ -6,6 +6,7 @@ import store from './store'
 import '@/assets/scss/index.scss'
 import baseUrl from '@/assets/util/path'
 import axios from 'axios'
+import 'animate.css'
 
 axios.defaults.baseURL = baseUrl
 

@@ -48,7 +48,6 @@ function parse() {
     connection.end()
 }
 
-
 function parseMD(path) {
     fs.readFile(path, function (err, data) {
         if (err) {
