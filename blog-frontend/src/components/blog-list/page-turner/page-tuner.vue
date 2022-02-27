@@ -99,4 +99,10 @@ export default {
     margin: 0 5px;
   }
 }
+
+.dark {
+  .page-tuner {
+    color: #fff;
+  }
+}
 </style>
