@@ -93,4 +93,11 @@ export default {
     }
   }
 }
+
+.dark {
+  .blog-categories-list-container {
+    background-color: #121212;
+    color: #ffffff;
+  }
+}
 </style>

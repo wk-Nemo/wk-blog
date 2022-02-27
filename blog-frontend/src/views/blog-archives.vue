@@ -1,8 +1,6 @@
 <template>
   <div class="blog-archives">
-    <blog-list
-      :articleList="articleList"
-    ></blog-list>
+    <blog-list :articleList="articleList" />
   </div>
 </template>
 

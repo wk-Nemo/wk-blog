@@ -1,8 +1,6 @@
 <template>
   <div class="categories">
-    <categories-list
-      :categoriesList="categoriesList"
-    ></categories-list>
+    <categories-list :categoriesList="categoriesList"></categories-list>
     <router-view :key="category"/>
   </div>
 </template>
