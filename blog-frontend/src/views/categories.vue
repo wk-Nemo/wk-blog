@@ -3,7 +3,7 @@
     <categories-list
       :categoriesList="categoriesList"
     ></categories-list>
-    <router-view />
+    <router-view :key="category"/>
   </div>
 </template>
 
@@ -23,6 +23,10 @@ export default {
   computed: {
     categoriesList () {
       return this.$store.state.categoriesList
+    },
+    category () {
+      console.log(this.$route.params.category)
+      return this.$route.params.category
     }
   }
 }

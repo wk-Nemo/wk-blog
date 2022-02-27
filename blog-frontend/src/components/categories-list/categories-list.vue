@@ -1,5 +1,5 @@
 <template>
-  <div class="blog-categories-list-container">
+  <div class="blog-categories-list-container animate__animated animate__fadeInUp">
     <h1 class="title">分类</h1>
     <div class="blog-categories-list">
       <div
