@@ -6,7 +6,7 @@
 
 <script>
 import BlogList from '@/components/blog-list/blog-list'
-import getBlogsByCategories from '@/server/getBlogsByCategories'
+import getArticleListByCategory from '@/server/getArticleListByCategory'
 
 export default {
   name: 'blog-categories',
@@ -20,8 +20,8 @@ export default {
   },
   async created () {
     const category = this.$route.params.category
-    const categoriesBlogList = await getBlogsByCategories(category)
-    this.articleList = categoriesBlogList
+    const articleList = await getArticleListByCategory(category)
+    this.articleList = articleList
   },
   watch: {
     $route: async function (to, from) {
@@ -29,13 +29,10 @@ export default {
       const fromCategory = from.params.category
 
       if (toCategory !== fromCategory) {
-        const categoriesBlogList = await getBlogsByCategories(toCategory)
-        this.articleList = categoriesBlogList
+        const articleList = await getArticleListByCategory(toCategory)
+        this.articleList = articleList
       }
     }
   }
 }
 </script>
-
-<style lang="scss" scoped>
-</style>

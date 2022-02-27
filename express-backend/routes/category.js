@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var mysql = require('mysql')
+var util = require('../public/js/util')
 
 var connection = mysql.createConnection({
   host     : 'localhost',
@@ -9,7 +10,7 @@ var connection = mysql.createConnection({
   database : 'wkblog'
 })
 
-/* GET home page. */
+// GET category list 
 router.get('/categoryList', function(req, res, next) {
   var sql = 'SELECT * FROM categories'
   
@@ -21,5 +22,22 @@ router.get('/categoryList', function(req, res, next) {
     res.send(result)
   })
 });
+
+// GET article list by category
+router.get('/:category', function (req, res) {
+  const category = req.params.category
+  const searchSql = 'SELECT * FROM articles WHERE categories = ' + '\'' + category + '\''
+
+  connection.query(searchSql, function (err, result) {
+    if(err) {
+      console.log('[SELECT ERROR] - ',err.message)
+      return
+    }
+    console.log('res', result)
+    const list = util.handleArticleList(result)
+    res.send(list)
+  })
+})
+
 
 module.exports = router;
