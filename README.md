@@ -45,6 +45,9 @@ home页面
 ### 2. 后端
 
 - 使用express框架给前端提供相应的接口
+  - article
+  - category
+  - tag
 - 本地检查博客文件，自动转换成mysql数据
 
 ## 效果预览
