@@ -174,7 +174,7 @@ export default {
 .dark {
   .my-message-content {
     .header {
-      background-color: rgb(44, 50, 60);
+      background-color: #121212;
       .img-wrapper {
         .header-img {
         }
@@ -187,7 +187,7 @@ export default {
       }
     }
     .options {
-      background: rgb(44, 50, 60);
+      background-color: #121212;
       .options-item {
         color: #fff;
         span {

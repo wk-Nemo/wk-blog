@@ -44,15 +44,13 @@
 
 <script>
 import getArticle from '@/server/getArticle'
-import { marked } from 'marked'
 import '@/assets/scss/github-markdown.css'
 
 export default {
   name: 'blog',
   data () {
     return {
-      blog: {},
-      content: ''
+      blog: {}
     }
   },
   watch: {
@@ -62,14 +60,7 @@ export default {
 
       if (fromId !== toId) {
         const data = await getArticle(toId)
-        this.blog = data[0]
-
-        const number = this.blog.content.length
-        const time = Math.floor(number / 150)
-        const date = this.blog.date
-        this.blog.readTime = `${number} 字约 ${time} 分钟`
-        this.blog.date = date.slice(0, 10)
-        this.content = marked.parse(this.blog.content)
+        this.blog = data
       }
     }
   },
@@ -85,17 +76,14 @@ export default {
     const id = this.$route.params.id
     const data = await getArticle(id)
     this.blog = data
-    // const number = this.blog.content.length
-    // const time = Math.floor(number / 150)
-    // const date = this.blog.date
-    // this.blog.readTime = `${number} 字约 ${time} 分钟`
-    // this.blog.date = date.slice(0, 10)
-    // this.content = this.blog.content
   }
 }
 </script>
 
 <style lang="scss" scoped>
+// @import url('../assets/scss/mixin.scss');
+@import "../assets/scss/_handle.scss";
+
 .blog {
   background: url('https://heskeybaozi.github.io/static/images/miku.jpg') 50% center / cover no-repeat fixed rgb(255, 255, 255);
   display: flex;
@@ -114,6 +102,7 @@ export default {
       z-index: 1;
       background-color: rgb(255, 255, 255);
       color: rgb(255, 255, 255);
+      @include font_color("font_color1");
       overflow: hidden;
       height: 100%;
       width: 100%;
@@ -136,6 +125,7 @@ export default {
       .author {
         font-size: 1.2em;
         margin-bottom: 1rem;
+        // @include background_color("background_color1");
       }
       .description {
         font-size: .9em;
