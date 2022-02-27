@@ -25,7 +25,6 @@ export default {
       return this.$store.state.categoriesList
     },
     category () {
-      console.log(this.$route.params.category)
       return this.$route.params.category
     }
   }
