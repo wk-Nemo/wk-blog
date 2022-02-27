@@ -6,7 +6,7 @@ switch (process.env.NODE_ENV) {
     break
 
   case 'production':
-    baseUrl = 'http://47.103.200.75:81/'
+    baseUrl = 'http://47.103.200.75:3000/'
     break
 }
 
