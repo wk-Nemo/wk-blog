@@ -28,7 +28,7 @@
         <article
           class="detail-content markdown-body"
           :class="markdownMode"
-          v-html="content"
+          v-html="blog.content"
         ></article>
       </div>
     </div>
@@ -43,7 +43,7 @@
 </template>
 
 <script>
-import getBlog from '@/server/getBlog'
+import getArticle from '@/server/getArticle'
 import { marked } from 'marked'
 import '@/assets/scss/github-markdown.css'
 
@@ -61,7 +61,7 @@ export default {
       const fromId = from.params.id
 
       if (fromId !== toId) {
-        const data = await getBlog(toId)
+        const data = await getArticle(toId)
         this.blog = data[0]
 
         const number = this.blog.content.length
@@ -83,15 +83,14 @@ export default {
   },
   async created () {
     const id = this.$route.params.id
-    const data = await getBlog(id)
-    this.blog = data[0]
-
-    const number = this.blog.content.length
-    const time = Math.floor(number / 150)
-    const date = this.blog.date
-    this.blog.readTime = `${number} 字约 ${time} 分钟`
-    this.blog.date = date.slice(0, 10)
-    this.content = marked.parse(this.blog.content)
+    const data = await getArticle(id)
+    this.blog = data
+    // const number = this.blog.content.length
+    // const time = Math.floor(number / 150)
+    // const date = this.blog.date
+    // this.blog.readTime = `${number} 字约 ${time} 分钟`
+    // this.blog.date = date.slice(0, 10)
+    // this.content = this.blog.content
   }
 }
 </script>

@@ -5,7 +5,7 @@ export default function getFriendLink () {
 
   return axios({
     method: 'get',
-    url: baseURL + 'friend/友链'
+    url: baseURL + 'article/friendLink'
   }).then((res) => {
     return res.data
   })

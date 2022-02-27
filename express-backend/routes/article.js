@@ -24,8 +24,31 @@ router.get('/articleList', function(req, res, next) {
   })
 });
 
-router.get('/blog', function(req, res, next) {
-  res.send('article')
-})
+router.get('/friendLink', function(req, res, next) {
+  const sql = `SELECT * FROM articles WHERE title = '友链'`
+
+  connection.query(sql, function (err, result) {
+    if(err) {
+      console.log('[SELECT ERROR] - ',err.message)
+      return
+    }
+
+    res.send(result)
+  })
+});
+
+router.get('/:id', function(req, res, next) {
+  const id = req.params.id
+  var sql = 'SELECT * from articles where id = ' + id
+
+  connection.query(sql, function (err, result) {
+    if(err) {
+      console.log('[SELECT ERROR] - ',err.message)
+      return
+    }
+    const article = util.handleArticle(result[0])
+    res.send(article)
+  })
+});
 
 module.exports = router;

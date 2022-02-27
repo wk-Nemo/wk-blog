@@ -33,7 +33,6 @@ router.get('/:category', function (req, res) {
       console.log('[SELECT ERROR] - ',err.message)
       return
     }
-    console.log('res', result)
     const list = util.handleArticleList(result)
     res.send(list)
   })

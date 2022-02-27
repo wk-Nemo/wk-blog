@@ -1,3 +1,5 @@
+const { marked } = require('marked');
+
 const handleArticleList = function(articleList) {
   const list = articleList.slice()
   const listLen = list.length
@@ -15,6 +17,20 @@ const handleArticleList = function(articleList) {
   return list
 }
 
+const handleArticle = function(article) {
+  const content = article.content
+  const number = article.content.length
+  const time = Math.floor(number / 150)
+  const date = article.date
+  const dateStr = getDate(date)
+  
+  article.readTime = `${number} 字约 ${time} 分钟`
+  article.date = dateStr
+  article.content = marked.parse(content)
+
+  return article
+}
+
 function getDate(date) {
   const year = date.getFullYear()
   const month = date.getMonth()
@@ -24,5 +40,6 @@ function getDate(date) {
 }
 
 module.exports = {
-  handleArticleList
+  handleArticleList,
+  handleArticle
 }
