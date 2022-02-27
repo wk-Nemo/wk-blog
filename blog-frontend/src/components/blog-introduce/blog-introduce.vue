@@ -132,4 +132,70 @@ export default {
 .introduce-wrapper:hover {
   box-shadow: 0 3px 8px 6px rgba(7, 17, 27, 0.15);
 }
+
+@media (max-width: 575.98px) {
+  .introduce-wrapper {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    .img-wrapper {
+      order: 1;
+      width: 100%;
+      overflow: visible;
+      img {
+        border-radius: 5px 5px 0 0;
+      }
+    }
+    .content-wrapper {
+      order: 2;
+      padding: 0.5rem;
+      width: 100%;
+      .title {
+        text-align: center;
+      }
+      .meta {
+        justify-content: center;
+        .meta-item {
+          margin: 0 5px;
+        }
+      }
+      .introduce {
+        padding: 5px;
+      }
+    }
+  }
+}
+
+@media (max-width: 767.98px) {
+  .introduce-wrapper {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    .img-wrapper {
+      order: 1;
+      width: 100%;
+      overflow: visible;
+      img {
+        border-radius: 5px 5px 0 0;
+      }
+    }
+    .content-wrapper {
+      order: 2;
+      padding: 0.5rem;
+      width: 100%;
+      .title {
+        text-align: center;
+      }
+      .meta {
+        justify-content: center;
+        .meta-item {
+          margin: 0 5px;
+        }
+      }
+      .introduce {
+        padding: 5px;
+      }
+    }
+  }
+}
 </style>

@@ -347,10 +347,9 @@ export default {
             font-weight: 500;
           }
         }
-        /* .header-menu-item:hover {
-          color: #f4f5f5;
-          background-color: #999;
-        } */
+        .header-menu-item::after {
+          display: none;
+        }
       }
     }
   }
