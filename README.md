@@ -1,99 +1,37 @@
-# wk-blog
 use vue3 to finish my blog
+## 1 预览
 
-## 设计思路
+- [线上预览地址](http://travel.wutortoise.cn/archives)
+- [github地址](https://github.com/wk-Nemo/wk-blog)
+- 
+### 1.1 首页
 
-博客前后端分离。
-
-### 1. 前端
-
-前端主要展示的内容有：封面、首页、归档、分类和标签。
-- 顶部展示封面 √
-- 进入页面后就是首页 √
-- 归档、分类和标签等通过左侧导航栏来实现 √
-
-头部导航
-- 首页 √
-- 文章
-- 关于
-- 友链 √
-- 模式（黑夜/白昼）
-
-home页面
-- 列表优化，进行分页处理
-- 翻页到达顶部
-  - windows √
-  - ios
-
-内部导航球
-- 内容阅读
-- 到顶
-- 到底
-
-分类设计
-- 解析分类文件
-- 将文章进行分类
-
-标签设计
-- 解析标签文件
-- 将文章进行标签分类
-
-博客内容展示考虑点
-- 文档的读取与转换 √
-- markdown 的样式 √
-
-### 2. 后端
-
-- 使用express框架给前端提供相应的接口
-  - article
-  - category
-  - tag
-- 本地检查博客文件，自动转换成mysql数据
-
-## 效果预览
-
-### 1. 首页
 **pc端首页:**
 
-- 白昼模式
-
-![image](https://user-images.githubusercontent.com/62100025/147407630-bbc2b567-5f5f-44b2-bdb3-7c05ccfc0279.png)
-
-
-- 黑夜模式
-
-![image](https://user-images.githubusercontent.com/62100025/147407697-2e8b4fe0-002e-4842-8db5-c7a3c9e21619.png)
+![image.png](https://cdn.nlark.com/yuque/0/2022/png/26291410/1646050986372-414b5ea1-fc17-494f-9782-671f55435483.png#clientId=uda4f1d72-df1f-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=844&id=uffd9bcd6&margin=%5Bobject%20Object%5D&name=image.png&originHeight=1688&originWidth=3064&originalType=binary&ratio=1&rotation=0&showTitle=false&size=2941361&status=done&style=none&taskId=u694603ac-c815-4df3-b695-8d91424d167&title=&width=1532)
 
 **移动端首页：**
 
-- 白昼模式
+![image.png](https://cdn.nlark.com/yuque/0/2022/png/26291410/1646051044222-6cacc1e9-7e09-41cb-be79-4c7d67195f74.png#clientId=uda4f1d72-df1f-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=775&id=u85f95625&margin=%5Bobject%20Object%5D&name=image.png&originHeight=1550&originWidth=724&originalType=binary&ratio=1&rotation=0&showTitle=false&size=706681&status=done&style=none&taskId=u309d1727-4a56-48c7-88d0-c431132975b&title=&width=362)
 
-![image](https://user-images.githubusercontent.com/62100025/147407751-85eec55a-57bb-4339-8c30-85cd36403845.png)
+### 1.2 归档 & 分类
 
-- 黑夜模式
+**pc端归档 &分类：**
 
-![image](https://user-images.githubusercontent.com/62100025/147407765-ebdfb5cf-2dbe-44c3-bb01-f1a346e30218.png)
+![image.png](https://cdn.nlark.com/yuque/0/2022/png/26291410/1646051236523-d75fd69a-5669-4e60-af93-b8a0c83f418f.png#clientId=uda4f1d72-df1f-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=848&id=u8973e30f&margin=%5Bobject%20Object%5D&name=image.png&originHeight=1696&originWidth=3070&originalType=binary&ratio=1&rotation=0&showTitle=false&size=937964&status=done&style=none&taskId=u425f238f-056c-43f3-8ec7-ca7921ac21b&title=&width=1535)
+![image.png](https://cdn.nlark.com/yuque/0/2022/png/26291410/1646051173855-40eab55a-b49c-40fe-ab24-fff88086188a.png#clientId=uda4f1d72-df1f-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=847&id=u9cfffc94&margin=%5Bobject%20Object%5D&name=image.png&originHeight=1694&originWidth=3070&originalType=binary&ratio=1&rotation=0&showTitle=false&size=522018&status=done&style=none&taskId=u19c83df3-ec15-4000-b077-5f8934aebcf&title=&width=1535)
+​
+
+**移动端端归档 &分类：**
+![image.png](https://cdn.nlark.com/yuque/0/2022/png/26291410/1646051276197-410d6ab5-7408-4e2a-95b4-bf384a87cbad.png#clientId=uda4f1d72-df1f-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=770&id=u9ec68134&margin=%5Bobject%20Object%5D&name=image.png&originHeight=1540&originWidth=698&originalType=binary&ratio=1&rotation=0&showTitle=false&size=697287&status=done&style=none&taskId=u5cac51d5-d52f-4e0b-ae46-0995f674158&title=&width=349) ![image.png](https://cdn.nlark.com/yuque/0/2022/png/26291410/1646051134789-b5d024fd-7e00-4587-a66f-26b9b1c3e578.png#clientId=uda4f1d72-df1f-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=774&id=Ar5eK&margin=%5Bobject%20Object%5D&name=image.png&originHeight=1556&originWidth=698&originalType=binary&ratio=1&rotation=0&showTitle=false&size=551556&status=done&style=none&taskId=u2cf5889a-054b-4ef0-b1cf-a9a90d468ae&title=&width=347)
+
 
 ### 2. 博客内容
 
-pc端首页:
+**pc端博客内容:**
 
-- 白昼模式
+![image.png](https://cdn.nlark.com/yuque/0/2022/png/26291410/1646051411453-1c70cf47-4701-4a51-8bf0-90ea3159c601.png#clientId=uda4f1d72-df1f-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=847&id=u7939cfc5&margin=%5Bobject%20Object%5D&name=image.png&originHeight=1694&originWidth=3064&originalType=binary&ratio=1&rotation=0&showTitle=false&size=3941014&status=done&style=none&taskId=u38b4dcd6-eb7a-4b74-8c91-26013841f4e&title=&width=1532)
 
-![image](https://user-images.githubusercontent.com/62100025/147316151-e319e40c-a0bf-418e-914c-8a35ad01e534.png)
+**移动端博客内容：**
 
-- 黑夜模式
-
-![image](https://user-images.githubusercontent.com/62100025/147407814-5c9148d0-a492-4130-8b34-f35472a10de3.png)
-
-
-移动端首页：
-
-- 白昼模式
-
-![image](https://user-images.githubusercontent.com/62100025/147316178-3de62062-a953-43f8-8ae0-e3e83d82dec6.png)
-
-- 黑夜模式
-
-![image](https://user-images.githubusercontent.com/62100025/147407836-df5d9453-de0e-40af-9064-d0d9ea077aa8.png)
-
+![image.png](https://cdn.nlark.com/yuque/0/2022/png/26291410/1646051356494-b7c28bb0-7b12-4175-b04d-17e585004ec5.png#clientId=uda4f1d72-df1f-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=771&id=u0c6a8b6a&margin=%5Bobject%20Object%5D&name=image.png&originHeight=1542&originWidth=720&originalType=binary&ratio=1&rotation=0&showTitle=false&size=557380&status=done&style=none&taskId=ub224acf9-30bb-4736-8714-5f4bc3f87d3&title=&width=360)
