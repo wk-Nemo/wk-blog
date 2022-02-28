@@ -83,6 +83,7 @@ export default {
 <style lang="scss" scoped>
 .my-message {
   padding: 1rem;
+  transition: all 0.5s;
   .my-message-content {
     position: relative;
     margin-right: -1rem;

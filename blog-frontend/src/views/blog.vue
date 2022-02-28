@@ -1,5 +1,5 @@
 <template>
-  <div class="blog" :class="{'dark': darkMode}">
+  <div class="blog animate__animated animate__fadeIn" :class="{'dark': darkMode}">
     <div class="blog-header">
       <div class="lite-header">
         <img class="avatar" src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3390826808,1281238612&fm=26&gp=0.jpg" alt="">
@@ -82,10 +82,12 @@ export default {
 
 <style lang="scss" scoped>
 .blog {
-  background: url('https://heskeybaozi.github.io/static/images/miku.jpg') 50% center / cover no-repeat fixed rgb(255, 255, 255);
+  // background: url('https://heskeybaozi.github.io/static/images/miku.jpg') 50% center / cover no-repeat fixed rgb(255, 255, 255);
+  background: url('../assets/img/blog-background-light.jpeg') 50% center / cover no-repeat fixed rgb(255, 255, 255);
   display: flex;
   flex-flow: column nowrap;
   min-height: 100vh;
+  transition: all 0.5s;
   .blog-header {
     display: flex;
     justify-content: center;
@@ -121,7 +123,6 @@ export default {
       .author {
         font-size: 1.2em;
         margin-bottom: 1rem;
-        // @include background_color("background_color1");
       }
       .description {
         font-size: .9em;
@@ -132,7 +133,7 @@ export default {
         z-index: -1;
         content: "";
         filter: blur(30px);
-        background: url('https://heskeybaozi.github.io/static/images/miku.jpg') 50% center / cover no-repeat fixed rgb(255, 255, 255);
+        background: url('../assets/img/blog-background-light.jpeg') 50% center / cover no-repeat fixed rgb(255, 255, 255);
         height: 100%;
         width: 100%;
       }
@@ -215,7 +216,7 @@ export default {
         z-index: -1;
         content: "";
         filter: blur(30px);
-        background: url('https://heskeybaozi.github.io/static/images/miku.jpg') 50% center / cover no-repeat fixed rgb(255, 255, 255);
+        background: url('../assets/img/blog-background-light.jpeg') 50% center / cover no-repeat fixed rgb(255, 255, 255);
         height: 100%;
         width: 100%;
       }
@@ -224,9 +225,9 @@ export default {
 }
 
 .dark {
-  background: url('https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fpic3-nc.pocoimg.cn%2Fimage%2Fpoco%2Fworks%2F10%2F2020%2F0903%2F00%2F15990627524040719_201497536_H1920.jpg&refer=http%3A%2F%2Fpic3-nc.pocoimg.cn&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1643081810&t=58ec63178a3be86d4cf0095492de143a') 50% center / cover no-repeat fixed rgb(255, 255, 255);
+  background: url('../assets/img/background-dark.jpeg') 50% center / cover no-repeat fixed rgb(255, 255, 255);
   .blog-header .lite-header .back {
-    background: url('https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fpic3-nc.pocoimg.cn%2Fimage%2Fpoco%2Fworks%2F10%2F2020%2F0903%2F00%2F15990627524040719_201497536_H1920.jpg&refer=http%3A%2F%2Fpic3-nc.pocoimg.cn&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1643081810&t=58ec63178a3be86d4cf0095492de143a') 50% center / cover no-repeat fixed rgb(255, 255, 255);
+    background: url('../assets/img/background-dark.jpeg') 50% center / cover no-repeat fixed rgb(255, 255, 255);
   }
   .blog-body {
     background: rgb(44, 50, 60);
@@ -253,13 +254,12 @@ export default {
     }
   }
   .blog-footer .lite-footer .back {
-    background: url('https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fpic3-nc.pocoimg.cn%2Fimage%2Fpoco%2Fworks%2F10%2F2020%2F0903%2F00%2F15990627524040719_201497536_H1920.jpg&refer=http%3A%2F%2Fpic3-nc.pocoimg.cn&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1643081810&t=58ec63178a3be86d4cf0095492de143a') 50% center / cover no-repeat fixed rgb(255, 255, 255);
+    background: url('../assets/img/background-dark.jpeg') 50% center / cover no-repeat fixed rgb(255, 255, 255);
   }
 }
 
 @media (max-width: 575.98px) {
   .blog {
-    /* background: url('https://heskeybaozi.github.io/static/images/miku.jpg') no-repeat center/cover; */
     width: 100%;
     .blog-header {
       width: 100%;

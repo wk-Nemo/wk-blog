@@ -1,5 +1,5 @@
 <template>
-  <div class="blog-categories-list-container animate__animated animate__fadeInUp">
+  <div class="blog-categories-list-container animate__animated animate__fadeIn">
     <h1 class="title">分类</h1>
     <div class="blog-categories-list">
       <div
@@ -49,6 +49,7 @@ export default {
   border-radius: 5px;
   background-color: white;
   padding-bottom: 1rem;
+  transition: all 0.5s;
   .title {
     text-align: center;
     font-size: 2rem;

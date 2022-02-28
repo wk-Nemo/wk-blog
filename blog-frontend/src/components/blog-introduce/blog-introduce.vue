@@ -53,6 +53,7 @@ export default {
   background-color: white;
   display: flex;
   height: 15rem;
+  transition: all 0.5s;
   .img-wrapper {
     order: 1;
     width: 45%;

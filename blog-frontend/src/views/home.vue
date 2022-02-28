@@ -1,7 +1,7 @@
 <template>
   <div class="home" :class="{'dark': darkMode}">
     <Header></Header>
-    <div class="container animate__animated animate__fadeInUp">
+    <div class="container animate__animated animate__fadeIn">
       <my-message></my-message>
       <router-view></router-view>
     </div>

@@ -1,5 +1,5 @@
 <template>
-  <div ref="homeRef" class="blog-list-container animate__animated animate__fadeInUp" :class="{'dark': darkMode}">
+  <div ref="homeRef" class="blog-list-container animate__animated animate__fadeIn" :class="{'dark': darkMode}">
     <div class="blog-list">
       <div
         v-for="(item, index) in showArticleList"

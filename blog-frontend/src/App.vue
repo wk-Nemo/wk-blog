@@ -1,7 +1,7 @@
 <template>
   <div class="app">
     <header-nav></header-nav>
-    <router-view></router-view>
+    <router-view :key="routePath"></router-view>
   </div>
 </template>
 
@@ -12,6 +12,11 @@ export default {
   name: 'app',
   components: {
     HeaderNav
+  },
+  computed: {
+    routePath () {
+      return this.$route.path
+    }
   }
 }
 </script>
