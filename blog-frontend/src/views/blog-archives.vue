@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import BlogList from '@/components/blog-list/blog-list'
+import BlogList from '@/components/blog-list/blog-archives-list'
 
 export default {
   name: 'blog-archives',

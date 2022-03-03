@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '@/views/home'
+import BlogHome from '@/views/blog-home'
 import BlogArchives from '@/views/blog-archives'
 import Categories from '@/views/categories'
 import BlogCategories from '@/views/blog-categories'
@@ -9,12 +10,12 @@ import Blog from '@/views/blog'
 const routes = [
   {
     path: '/',
-    redirect: '/archives'
-  },
-  {
-    path: '/home',
     component: Home,
     children: [
+      {
+        path: '/',
+        component: BlogHome
+      },
       {
         path: '/archives',
         component: BlogArchives

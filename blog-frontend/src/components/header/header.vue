@@ -36,7 +36,6 @@ export default {
     width: 100%;
     height: 100%;
     transition: all 0.5s;
-    // background: url(https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fwx4.sinaimg.cn%2Flarge%2F006NrdrIgy1fvw0ilspmuj31hc0u0nkt.jpg&refer=http%3A%2F%2Fwx4.sinaimg.cn&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1643082593&t=1c83495d70d5212334b683cca421b7d8) no-repeat center/cover;
     background: url("../../assets/img/background-light.jpeg") no-repeat center/cover;
     .header-banner-info {
       position: absolute;
@@ -74,7 +73,6 @@ export default {
 
 .dark {
   .header-banner {
-    // background: url(https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fpic3-nc.pocoimg.cn%2Fimage%2Fpoco%2Fworks%2F10%2F2020%2F0903%2F00%2F15990627524040719_201497536_H1920.jpg&refer=http%3A%2F%2Fpic3-nc.pocoimg.cn&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1643081810&t=58ec63178a3be86d4cf0095492de143a) no-repeat center/cover;
     background: url("../../assets/img/background-dark.jpeg") no-repeat center/cover;
   }
 }
@@ -86,8 +84,6 @@ export default {
       .header-banner-info {
         .header-banner-info-title {
           font-size: 2rem;
-        }
-        .header-banner-info-subtitle {
         }
       }
     }
@@ -101,8 +97,6 @@ export default {
       .header-banner-info {
         .header-banner-info-title {
           font-size: 2rem;
-        }
-        .header-banner-info-subtitle {
         }
       }
     }
