@@ -23,7 +23,7 @@
             >
               <div class="icon-wrapper">
                 <span
-                  class="icon iconfont icon-shouye"
+                  class="icon iconfont"
                   :class="item.icon"
                 />
               </div>
