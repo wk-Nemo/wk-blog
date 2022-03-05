@@ -1,21 +1,34 @@
 <template>
   <div class="blog-archives">
-    <blog-list :articleList="articleList" />
+    <blog-archives-list
+      :articleList="archivesList"
+      :articleListLen="articleListLen"
+    />
   </div>
 </template>
 
 <script>
-import BlogList from '@/components/blog-list/blog-archives-list'
+import BlogArchivesList from '@/components/blog-list/blog-archives-list'
+import getArchivesList from '@/server/getArchivesList'
 
 export default {
   name: 'blog-archives',
   components: {
-    BlogList
+    BlogArchivesList
   },
-  computed: {
-    articleList () {
-      return this.$store.state.articleList
+  data () {
+    return {
+      archivesList: [],
+      articleListLen: 0
     }
+  },
+  async created () {
+    const data = await getArchivesList()
+    for (const value of data.data) {
+      this.archivesList.push(value.year)
+      this.archivesList.push(...value.list)
+    }
+    this.articleListLen = this.archivesList.length
   }
 }
 </script>

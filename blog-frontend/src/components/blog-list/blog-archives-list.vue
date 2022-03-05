@@ -5,21 +5,25 @@
         <div class="list-title">文章总览</div>
         <div class="item-wrapper">
             <div
-                class="list-item"
                 v-for="item in showArticleList"
                 @click="handleToBlog(item.id)"
                 :key="item.id"
             >
+              <div class="list-item year" v-if="typeof item === 'number'">
+                {{ item }}
+              </div>
+              <div class="list-item" v-else>
                 <div class="imgWrapper">
                     <img :src="item.imgSrc">
                 </div>
                 <div class="item-content">
                     <div class="time-wrapper">
-                        <span class="icon iconfont icon-rili"></span>
-                        <div class="time">{{ item.date }}</div>
+                      <span class="icon iconfont icon-rili"></span>
+                      <div class="time">{{ item.date }}</div>
                     </div>
                     <div class="title">{{ item.title }}</div>
                 </div>
+              </div>
             </div>
         </div>
     </div>
@@ -46,6 +50,10 @@ export default {
       default () {
         return []
       }
+    },
+    articleListLen: {
+      type: Number,
+      default: 0
     }
   },
   data () {
@@ -59,6 +67,9 @@ export default {
       homeRef
     }
   },
+  mounted () {
+    console.log(this.articleList)
+  },
   computed: {
     darkMode () {
       return this.$store.state.mode
@@ -67,8 +78,7 @@ export default {
       return this.articleList.slice(this.page * PAGE_SIZE, (this.page + 1) * PAGE_SIZE)
     },
     pageList () {
-      const articleListLen = this.articleList.length
-      const len = Math.ceil(articleListLen / PAGE_SIZE)
+      const len = Math.ceil(this.articleListLen / PAGE_SIZE)
       const pages = []
       for (let i = 0; i < len; i++) {
         pages.push(i)
@@ -194,6 +204,9 @@ export default {
         }
         .list-item:hover::after {
             border-color: #ff7242;
+        }
+        .year {
+          font-size: 1.3rem;
         }
     }
   }
