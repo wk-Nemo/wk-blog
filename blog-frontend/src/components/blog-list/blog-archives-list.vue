@@ -9,10 +9,10 @@
                 @click="handleToBlog(item.id)"
                 :key="item.id"
             >
-              <div class="list-item year" v-if="typeof item === 'number'">
+              <div class="list-item year animate__animated animate__fadeIn" v-if="typeof item === 'number'">
                 {{ item }}
               </div>
-              <div class="list-item" v-else>
+              <div class="list-item animate__animated animate__fadeIn" v-else>
                 <div class="imgWrapper">
                     <img :src="item.imgSrc">
                 </div>
