@@ -1,8 +1,8 @@
 @font-face {
   font-family: "iconfont"; /* Project id 3208350 */
-  src: url('./iconfont.woff2?t=1645963439479') format('woff2'),
-       url('./iconfont.woff?t=1645963439479') format('woff'),
-       url('./iconfont.ttf?t=1645963439479') format('truetype');
+  src: url('iconfont.woff2?t=1646455830776') format('woff2'),
+       url('iconfont.woff?t=1646455830776') format('woff'),
+       url('iconfont.ttf?t=1646455830776') format('truetype');
 }
 
 .iconfont {
@@ -11,6 +11,10 @@
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-Tziliaoguidang:before {
+  content: "\e748";
 }
 
 .icon-sousuo:before {

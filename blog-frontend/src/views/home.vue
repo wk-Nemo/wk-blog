@@ -1,6 +1,6 @@
 <template>
   <div class="home" :class="{'dark': darkMode}">
-    <Header></Header>
+    <Header :type="type" />
     <div class="container animate__animated animate__fadeIn">
       <my-message></my-message>
       <router-view></router-view>
@@ -23,6 +23,9 @@ export default {
   computed: {
     darkMode () {
       return this.$store.state.mode
+    },
+    type () {
+      return this.$store.state.type
     }
   },
   async created () {

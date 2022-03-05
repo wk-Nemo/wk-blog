@@ -1,12 +1,17 @@
 <template>
-  <div class="header animate__animated animate__fadeIn" :class="{'dark': darkMode}">
+  <div class="header animate__animated animate__fadeIn" :class="{ 'dark': darkMode, 'orther-type': !homeType }">
     <div class="header-banner">
-      <div class="header-banner-info">
+      <div class="header-banner-info" v-if="homeType">
         <div class="header-banner-info-title animate__animated animate__fadeIn animate__delay">
           TortoiseWu's Blog
         </div>
         <div class="header-banner-info-subtitle animate__animated animate__fadeIn animate__delay-1s">
           认真做好每一件事
+        </div>
+      </div>
+      <div class="header-banner-info" v-else>
+         <div class="header-banner-info-title header-banner-info-title-size animate__animated animate__fadeIn animate__delay">
+            {{ bannerInfo }}
         </div>
       </div>
     </div>
@@ -16,9 +21,28 @@
 <script>
 export default {
   name: 'header',
+  props: {
+    type: {
+      type: String,
+      default: 'home'
+    }
+  },
   computed: {
     darkMode () {
       return this.$store.state.mode
+    },
+    homeType () {
+      return this.type === 'home'
+    },
+    bannerInfo () {
+      switch (this.type) {
+        case 'archives':
+          return '归档'
+        case 'categories':
+          return '分类'
+        default:
+          return ''
+      }
     }
   }
 }
@@ -51,6 +75,9 @@ export default {
         line-height: 1;
         color: #f5f6f7;
       }
+      .header-banner-info-title-size {
+        font-size: 2rem;
+      }
       .header-banner-info-subtitle {
         font-size: 1.2rem;
         font-weight: 400;
@@ -69,6 +96,10 @@ export default {
     height: 100%;
     background-color: rgba(0,0,0,0.25);
   }
+}
+
+.orther-type {
+  height: 50vh;
 }
 
 .dark {

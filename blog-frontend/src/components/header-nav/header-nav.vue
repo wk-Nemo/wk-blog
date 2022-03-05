@@ -12,39 +12,23 @@
         <transition name="list-fade">
           <div
             v-if="showList"
-            @click="handleClickMenu"
             class="header-nav-menu"
           >
-            <router-link to="/" class="header-menu-item">
+            <router-link
+              v-for="item in menu"
+              :key="item.icon"
+              :to="item.to"
+              @click="handleClickItem(item)"
+              class="header-menu-item"
+            >
               <div class="icon-wrapper">
-                <span class="icon iconfont icon-shouye"></span>
+                <span
+                  class="icon iconfont icon-shouye"
+                  :class="item.icon"
+                />
               </div>
               <div class="item-content">
-                首页
-              </div>
-            </router-link>
-            <router-link to="/categories" class="header-menu-item">
-              <div class="icon-wrapper">
-                <span class="icon iconfont icon-wenzhangfenlei"></span>
-              </div>
-              <div class="item-content">
-                分类
-              </div>
-            </router-link>
-            <div class="header-menu-item">
-              <div class="icon-wrapper">
-                <span class="icon iconfont icon-guanyu"></span>
-              </div>
-              <div class="item-content">
-                关于
-              </div>
-            </div>
-            <router-link :to="friendLink" class="header-menu-item">
-              <div class="icon-wrapper">
-                <span class="icon iconfont icon-lianjie"></span>
-              </div>
-              <div class="item-content">
-                友链
+                {{item.title}}
               </div>
             </router-link>
           </div>
@@ -78,7 +62,39 @@ export default {
       showHeaderNav: true,
       friendLink: '',
       screenWidth: document.body.clientWidth,
-      showList: false
+      showList: false,
+      menu: [
+        {
+          icon: 'icon-shouye',
+          title: '首页',
+          to: '/',
+          type: 'home'
+        },
+        {
+          icon: 'icon-Tziliaoguidang',
+          title: '归档',
+          to: '/archives',
+          type: 'archives'
+        },
+        {
+          icon: 'icon-wenzhangfenlei',
+          title: '分类',
+          to: 'categories',
+          type: 'categories'
+        },
+        {
+          icon: 'icon-guanyu',
+          title: '关于',
+          to: '/',
+          type: 'about'
+        },
+        {
+          icon: 'icon-lianjie',
+          title: '友链',
+          to: '/',
+          type: 'friendLink'
+        }
+      ]
     }
   },
   methods: {
@@ -99,10 +115,21 @@ export default {
     handleShowList () {
       this.showList = !this.showList
     },
-    handleClickMenu () {
+    handleClickItem (item) {
+      const typeList = ['home', 'archives', 'categories']
+      const { type } = item
+
       if (this.screenOnPhone) {
         this.showList = false
       }
+
+      if (typeList.includes(type)) {
+        console.log(type)
+        this.changeType(type)
+      }
+    },
+    changeType (type) {
+      this.$store.commit('setType', type)
     },
     changeMode () {
       const mode = this.$store.state.mode
@@ -120,7 +147,7 @@ export default {
   async created () {
     const data = await getFriendLink()
     const id = data[0].id
-    this.friendLink = '/blog/' + id
+    this.menu[4].to = '/blog/' + id
   },
   mounted () {
     window.addEventListener('scroll', this.onScroll)
