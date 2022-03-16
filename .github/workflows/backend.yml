@@ -15,11 +15,6 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: '14'
-
-      - name: Build
-        run: |
-          cd express-backend # 进入项目目录
-          npm install  # 安装依赖
   
       - name: Deploy 🚀
         uses: cross-the-world/scp-pipeline@master
@@ -35,6 +30,7 @@ jobs:
          remote: /www/wk-blog/backend
          last_ssh: |
             cd /www/wk-blog/backend
+            npm install  # 安装依赖
             node parse.js
             cd bin
             pm2 restart www
