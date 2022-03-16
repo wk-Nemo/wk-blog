@@ -1,5 +1,5 @@
 ---
-title: Github Actions 自动化部署 Vue3 博客项目
+title: 自动化部署Vue3博客项目
 date: 2022-03-16 21:53:09
 categories: JavaScript
 ---
