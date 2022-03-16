@@ -1,0 +1,42 @@
+name: build
+on: 
+  push: 
+    branches: 
+      - main
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v2
+        with:
+          persist-credentials: false
+          
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Build
+        run: |
+          cd express-backend # 进入项目目录
+          npm install  # 安装依赖
+  
+      - name: Deploy 🚀
+        uses: cross-the-world/scp-pipeline@master
+        env:
+          WELCOME: "ssh scp ssh pipelines"
+          LASTSSH: "Doing something after copying"
+        with:
+         host: ${{ secrets.DR_HOST }}
+         user: ${{ secrets.DR_USER }}
+         pass: ${{ secrets.DR_PASS }}
+         connect_timeout: 10s
+         local: '*'
+         remote: /www/wk-blog/backend
+         last_ssh: |
+            cd /www/wk-blog/backend
+            node parse.js
+            cd bin
+            pm2 restart www
+
+           
