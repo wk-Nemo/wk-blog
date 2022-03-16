@@ -41,6 +41,7 @@ jobs:
           script: |
             cd /www/wk-blog/backend
             npm install  # 安装依赖
+            cd /www/wk-blog/backend
             node parse.js
             cd bin
             pm2 restart www
