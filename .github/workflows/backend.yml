@@ -26,15 +26,19 @@ jobs:
          user: ${{ secrets.DR_USER }}
          pass: ${{ secrets.DR_PASS }}
          connect_timeout: 10s
-#          local: './express-backend/*'
-#          remote: /www/wk-blog/backend
-         first_ssh: |
-            cd /www/wk-blog
-            rm -rf backend
-            mkdir backend
-         scp: |
-            './express-backend/*' => /www/wk-blog/backend
-         last_ssh: |
+         local: './express-backend/*'
+         remote: /www/wk-blog/backend
+         
+      - name: ssh pipelines
+        uses: cross-the-world/ssh-pipeline@master
+        env:
+          WELCOME: "ssh pipeline"
+        with:
+          host: ${{ secrets.DR_HOST }}
+          user: ${{ secrets.DR_USER }}
+          pass: ${{ secrets.DR_PASS }}
+          connect_timeout: 10s
+          script: |
             cd /www/wk-blog/backend
             npm install  # 安装依赖
             node parse.js
