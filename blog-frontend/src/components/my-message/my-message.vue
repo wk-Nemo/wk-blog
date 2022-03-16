@@ -64,7 +64,7 @@ export default {
           path: '/categories'
         },
         {
-          number: 5,
+          number: 0,
           name: '标签',
           path: '/tags'
         }
