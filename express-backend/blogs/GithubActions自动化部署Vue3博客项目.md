@@ -2,8 +2,6 @@
 title: Github Actions 自动化部署 Vue3 博客项目
 date: 2022-03-16 21:53:09
 categories: JavaScript
-imgSrc: https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/9243e4b5f49f4ebaae67be01a15d6a4d~tplv-k3u1fbpfcp-watermark.image
-introduce: 通过实现自动化部署一个 vue 项目学习 GitHub Actions，使用 GitHub Actions 实现 CI/CD。
 ---
 
 最近在开发自己的博客系统，每次迭代完一次代码就要重新手动部署一次，有时候部署后才发现一些bug，又要回过头来重新部署，十分的麻烦。自己的项目托管在github上，因此想实现每次push完代码到master分支上后，github可以自动的帮我进行部署这一步骤，这样就可以避免频繁的手动部署。
