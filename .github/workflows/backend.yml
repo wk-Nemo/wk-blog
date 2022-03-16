@@ -38,6 +38,9 @@ jobs:
           user: ${{ secrets.DR_USER }}
           pass: ${{ secrets.DR_PASS }}
           connect_timeout: 10s
+          script: |
+            cd /www/wk-blog/backend
+            npm install
       
       - name: ssh pipelines - read blogs
         uses: cross-the-world/ssh-pipeline@master
