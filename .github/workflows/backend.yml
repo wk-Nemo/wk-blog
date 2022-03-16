@@ -29,7 +29,17 @@ jobs:
          local: './express-backend/*'
          remote: /www/wk-blog/backend
          
-      - name: ssh pipelines
+      - name: ssh pipelines - npm install
+        uses: cross-the-world/ssh-pipeline@master
+        env:
+          WELCOME: "ssh pipeline"
+        with:
+          host: ${{ secrets.DR_HOST }}
+          user: ${{ secrets.DR_USER }}
+          pass: ${{ secrets.DR_PASS }}
+          connect_timeout: 10s
+      
+      - name: ssh pipelines - read blogs
         uses: cross-the-world/ssh-pipeline@master
         env:
           WELCOME: "ssh pipeline"
@@ -40,9 +50,18 @@ jobs:
           connect_timeout: 10s
           script: |
             cd /www/wk-blog/backend
-            npm install  # 安装依赖
-            cd /www/wk-blog/backend
             node parse.js
+            
+      - name: ssh pipelines - restart www
+        uses: cross-the-world/ssh-pipeline@master
+        env:
+          WELCOME: "ssh pipeline"
+        with:
+          host: ${{ secrets.DR_HOST }}
+          user: ${{ secrets.DR_USER }}
+          pass: ${{ secrets.DR_PASS }}
+          connect_timeout: 10s
+          script: |
             cd bin
             pm2 restart www
 
