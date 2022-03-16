@@ -29,6 +29,6 @@ jobs:
          pass: ${{ secrets.DR_PASS }}
          connect_timeout: 10s
          local: './blog-frontend/dist/*'
-         remote: /www/wk-blog
+         remote: /www/wk-blog/dist
 
            
