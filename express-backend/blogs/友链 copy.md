@@ -1,14 +1,10 @@
 ---
-title: 友链
-date: 2021-05-08 21:53:09
+title: Github Action 实现自动化部署
+date: 2022-03-16 21:53:09
 categories: JavaScript
 ---
 
-## 友链
-
-我的朋友们，在我的学习道路上给了我很多的帮助：
-
-- [Kingfish](https://blog.kingfish404.cn/)
+## Github Action
 
 
 
