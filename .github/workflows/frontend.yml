@@ -1,0 +1,34 @@
+name: build
+on: 
+  push: 
+    branches: 
+      - main
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v2
+        with:
+          persist-credentials: false
+
+      - name: Build
+        run: |
+          cd blog-frontend # 进入项目目录
+          npm install  # 安装依赖
+          npm run build  # 执行打包
+  
+      - name: Deploy 🚀
+        uses: cross-the-world/scp-pipeline@master
+        env:
+          WELCOME: "ssh scp ssh pipelines"
+          LASTSSH: "Doing something after copying"
+        with:
+         host: ${{ secrets.DR_HOST }}
+         user: ${{ secrets.DR_USER }}
+         pass: ${{ secrets.DR_PASS }}
+         connect_timeout: 10s
+         local: './blog-frontend/dist/*'
+         remote: /www/wk-blog
+
+           
