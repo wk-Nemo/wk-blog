@@ -31,7 +31,7 @@ jobs:
          user: ${{ secrets.DR_USER }}
          pass: ${{ secrets.DR_PASS }}
          connect_timeout: 10s
-         local: '*'
+         local: './express-backend/*'
          remote: /www/wk-blog/backend
          last_ssh: |
             cd /www/wk-blog/backend
