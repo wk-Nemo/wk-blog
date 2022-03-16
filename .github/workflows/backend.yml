@@ -1,10 +1,10 @@
-name: build
+name: backend-build
 on: 
   push: 
     branches: 
       - main
 jobs:
-  build-and-deploy:
+  backend:
     runs-on: ubuntu-20.04
     steps:
       - name: Checkout 🛎️
@@ -26,8 +26,14 @@ jobs:
          user: ${{ secrets.DR_USER }}
          pass: ${{ secrets.DR_PASS }}
          connect_timeout: 10s
-         local: './express-backend/*'
-         remote: /www/wk-blog/backend
+#          local: './express-backend/*'
+#          remote: /www/wk-blog/backend
+         first_ssh: |
+            cd /www/wk-blog
+            rm -rf backend
+            mkdir backend
+         scp: |
+            './express-backend/*' => /www/wk-blog/backend
          last_ssh: |
             cd /www/wk-blog/backend
             npm install  # 安装依赖
