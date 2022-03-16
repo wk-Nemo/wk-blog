@@ -34,5 +34,7 @@ jobs:
          connect_timeout: 10s
          local: './blog-frontend/dist/*'
          remote: /www/wk-blog/dist
+         last_ssh: |
+            nginx -s reload
 
            
