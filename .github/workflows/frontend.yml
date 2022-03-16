@@ -17,6 +17,8 @@ jobs:
           cd blog-frontend # 进入项目目录
           npm install  # 安装依赖
           npm run build  # 执行打包
+        with:
+          node-version: '14.19.0'
   
       - name: Deploy 🚀
         uses: cross-the-world/scp-pipeline@master
