@@ -15,6 +15,19 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: '14'
+          
+      - name: ssh pipelines - del
+        uses: cross-the-world/ssh-pipeline@master
+        env:
+          WELCOME: "ssh pipeline"
+        with:
+          host: ${{ secrets.DR_HOST }}
+          user: ${{ secrets.DR_USER }}
+          pass: ${{ secrets.DR_PASS }}
+          connect_timeout: 10s
+          script: |
+            cd /www/wk-blog/backend
+            rm -rf blogs
   
       - name: Deploy 🚀
         uses: cross-the-world/scp-pipeline@master
