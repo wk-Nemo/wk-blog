@@ -9,8 +9,6 @@ const handleArticleList = function(articleList) {
     const number = content.length
     const time = Math.floor(number / 150)
     const date = handleDate(list[i].date)
-
-    console.log(date)
     
     list[i].readTime = `${number} 字约 ${time} 分钟`
     list[i].date = date
@@ -21,6 +19,10 @@ const handleArticleList = function(articleList) {
 }
 
 const handleDate = function (date) {
+  console.log('date:', date)
+  console.log('dataStr', date.toLocaleDateString())
+  console.log('date1:', date.toLocaleDateString().split('/').join('-'))
+  console.log('date2:', date.toLocaleDateString().split('/').reverse().join('-'))
   const arr = date.toLocaleDateString().split('/')
   return arr.join('-')
 }
