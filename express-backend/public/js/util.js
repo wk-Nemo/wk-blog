@@ -9,6 +9,8 @@ const handleArticleList = function(articleList) {
     const number = content.length
     const time = Math.floor(number / 150)
     const date = handleDate(list[i].date)
+
+    console.log(date)
     
     list[i].readTime = `${number} 字约 ${time} 分钟`
     list[i].date = date
@@ -19,7 +21,7 @@ const handleArticleList = function(articleList) {
 }
 
 const handleDate = function (date) {
-  const arr = date.toLocaleDateString().split('/').reverse()
+  const arr = date.toLocaleDateString().split('/')
   return arr.join('-')
 }
 
