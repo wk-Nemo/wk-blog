@@ -13,7 +13,9 @@ tags: 面试
 - js中的数组
 - js中的函数
 - js的面向对象编程
+
 [秋招保驾护航——js面试篇（下）](https://juejin.cn/post/6988515657105047559)
+
 - js的异步编程
 - js的模块化管理
 - ES6新特性
@@ -1107,7 +1109,7 @@ Function.prototype.bind = function(context) {
   return func
 }
 ```
-    
+
 **（6）箭头函数**
 
 箭头函数使用被称为 “胖箭头” 的操作 => 定义，箭头函数不应用普通函数 this 绑定的四种规则，而是根据外层（函数或全局）的作用域来决定 this，且箭头函数的绑定无法被修改（new 也不行）。
@@ -1288,7 +1290,7 @@ Foo().getName();
     **缺点：** 工厂模式解决了创建多个相似对象的问题，却没有解决对象识别的问题（即判断一个对象的类型）
     
  - 构造函数模式：我们知道构造函数可以创建指定类型的对象。除了Object、Array这样的原生构造函数，我们还可以自己创建定义构造函数。如下：
- 
+
     ```JavaScript
    function Person(name,age,job) {
        this.name = name;
@@ -1319,10 +1321,10 @@ Foo().getName();
     
     var person1 = new Person();
     person1.sayName();//"小猪皮皮呆"
-
+    
     var person2 = new Person();
     person2.sayName();//"小猪皮皮呆"
-
+    
     alert(person1.sayName == person2.sayName);//true
     ```
     **缺点：** 原型模式最大的好处就是他的共享，而这也恰恰是他的缺点，有时一些数据我们并不想和其他的实例共享，比如每个人的名字都不一样，而在原型模式中所有实例的名字都会变成一样。
@@ -1336,7 +1338,7 @@ Foo().getName();
         this.age = age;
         this.job = job;    
     }
-
+    
     Person.prototype = {
        constructor:Person,
        sayName = function(){
@@ -1381,7 +1383,7 @@ function shallowCopy(obj) {
     **缺点：** 此方法无法复制函数和正则
     
  - 递归实现
- 
+
     ```javaScript
     function jsonCopy(obj) {
       return JSON.parse(JSON.stringify(obj))
@@ -1482,7 +1484,7 @@ function shallowCopy(obj) {
       this.job = job;
     }
     Child.prototype = new Parent();
-
+    
     let child = new Child('wk', 18, 'coder');
     child.getName(); // wk
     ```
@@ -1502,7 +1504,7 @@ function shallowCopy(obj) {
       Fun.prototype = obj;
       return new Fun()
     }
-
+    
     let person = {
       name: "wk",
       age: 18,
@@ -1511,17 +1513,17 @@ function shallowCopy(obj) {
         console.log(this.name);
       }
     }
-
+    
     let person1 = objectCopy(person);
     person1.name = "wxb";
     person1.friends.push("lily");
     person1.sayName(); // wxb
-
+    
     let person2 = objectCopy(person);
     person2.name = "gsr";
     person2.friends.push("kobe");
     person2.sayName(); // "gsr"
-
+    
     console.log(person.name); //wk
     console.log(person.friends); // ["jack", "tom", "rose", "lily", "kobe"]
     ```
@@ -1552,21 +1554,21 @@ function shallowCopy(obj) {
       };
       return clone;
     }
-
+    
     let person = {
       name: 'wk',
       friend: ["rose", "tom", "jack"],
     }
-
+    
     let person1 = createAnother(person);
     person1.friends.push("lily");
     console.log(person1.friends);
     person1.getName(); // wk
-
+    
     let person2 = createAnother(person);
     console.log(person2.friends); // ["rose", "tom", "jack", "lily"]
     ```
-    
+
 - 寄生组合继承（组合的优化）：寄生式组合继承可以算是引用类型继承的最佳模式
 
     ```JavaScript
@@ -1577,7 +1579,7 @@ function shallowCopy(obj) {
     Parent.prototype.getName = function () {
       console.log(this.name);
     }
-
+    
     function Child(name, age) {
       Parent.call(this, name);
       this.age = age;
@@ -1587,13 +1589,13 @@ function shallowCopy(obj) {
     Child.prototype.getAge = function () {
       console.log(this.age);
     }
-
+    
     let child1 = new Child("wk", 18);
     child1.getAge(); // 18
     child1.getName(); // wk
     child1.friends.push("jack");
     console.log(child1.friends); // ["rose", "lily", "tom", "jack"]
-
+    
     let child2 = new Child("cy", 21);
     child2.getAge(); // 21
     child2.getName(); // cy
@@ -1606,7 +1608,7 @@ function shallowCopy(obj) {
     - 父类的引用属性不会被共享
     
 ### 6. class
-    
+
 **（1）基础用法**
 - constructor
 - 属性
@@ -1689,7 +1691,7 @@ c.sayCompany()
 class是语法糖，本质还是构造函数，属性会放在构造函数体内，而方法会写在函数的原型里
     
 ### 7. 看下列代码说输出
-    
+
 ```javaScript
 var A = function() {};
 A.prototype.n = 1;
@@ -1706,11 +1708,10 @@ console.log(b.m); // undefined
 console.log(c.n); // 2
 console.log(c.m); // 3
 ```
-    
+
 开始时，A的原型是{ n = 1 }，b在此时创建，`__proto__`属性指向{ n = 1 }，后面构造函数A的原型换成了{n:2, m :3}，但是不会影响b的`__proto__`的指向。
 
 ![image.png](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/70da41d71e0c42c38a07e9c7b4966a9c~tplv-k3u1fbpfcp-watermark.image)
-
 
 
 
