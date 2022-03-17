@@ -16,7 +16,7 @@ jobs:
         with:
           node-version: '14'
           
-      - name: ssh pipelines - del
+      - name: ssh pipelines - delete backend
         uses: cross-the-world/ssh-pipeline@master
         env:
           WELCOME: "ssh pipeline"
@@ -26,8 +26,8 @@ jobs:
           pass: ${{ secrets.DR_PASS }}
           connect_timeout: 10s
           script: |
-            cd /www/wk-blog/backend
-            rm -rf blogs
+            cd /www/wk-blog
+            rm -rf backend
   
       - name: Deploy 🚀
         uses: cross-the-world/scp-pipeline@master
