@@ -19,7 +19,11 @@ const handleArticleList = function(articleList) {
 }
 
 const handleDate = function (date) {
-  const arr = date.toLocaleDateString().split('/').reverse()
+  const year = date.getFullYear()
+  const month = date.getMonth() + 1
+  const day = date.getDate()
+  const arr = [year, month, day]
+
   return arr.join('-')
 }
 
