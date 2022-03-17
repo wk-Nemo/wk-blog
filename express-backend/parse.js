@@ -84,8 +84,6 @@ function parseMDSync(path) {
     let articleIntroduce = Msg.articleIntroduce
     let articleContent = Msg.articleContent
 
-    console.log(typeof articleContent)
-
     const insertSql = 'INSERT INTO articles (title, categories, date, imgSrc, introduce, content) VALUES(?,?,?,?,?,?) '
     const insertParams = [articleTitle, articleCategories, articleDate, articleImgSrc, articleIntroduce, articleContent]
     connection.query(insertSql, insertParams, function (err) {
@@ -93,6 +91,7 @@ function parseMDSync(path) {
             console.log(articleTitle, ' [INSERT ERROR] - ', err.message)
             return
         }
+        console.log('[SUCCESS]: read blogs')
     })
 }
 
@@ -108,6 +107,8 @@ function parseCategoriesSync(path) {
             console.log('[INSERT ERROR] - ', err.message)
             return
         }
+
+        console.log('[SUCCESS]: read categories')
     })
 }
 

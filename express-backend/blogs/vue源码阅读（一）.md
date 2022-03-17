@@ -1,5 +1,5 @@
 ---
-title: vue源码阅读（一）
+title: vue源码阅读—入口流程
 date: 2021-11-25 22:34:18
 categories: Vue
 ---
@@ -477,7 +477,7 @@ export function initState (vm: Component) {
       hydrating?: boolean
     ): Component {
       el = el && query(el)
-
+    
       /* istanbul ignore if */
       if (el === document.body || el === document.documentElement) {
         process.env.NODE_ENV !== 'production' && warn(
@@ -485,7 +485,7 @@ export function initState (vm: Component) {
         )
         return this
       }
-
+    
       const options = this.$options
       // resolve template/el and convert to render function
       if (!options.render) {
@@ -518,7 +518,7 @@ export function initState (vm: Component) {
           if (process.env.NODE_ENV !== 'production' && config.performance && mark) {
             mark('compile')
           }
-
+    
           const { render, staticRenderFns } = compileToFunctions(template, {
             outputSourceRange: process.env.NODE_ENV !== 'production',
             shouldDecodeNewlines,
@@ -528,7 +528,7 @@ export function initState (vm: Component) {
           }, this)
           options.render = render
           options.staticRenderFns = staticRenderFns
-
+    
           /* istanbul ignore if */
           if (process.env.NODE_ENV !== 'production' && config.performance && mark) {
             mark('compile end')
@@ -626,7 +626,6 @@ export function mountComponent (
 ## 小结
 
 读完这一段代码能感觉到在这个简单的小demo中，vue的工作始终都围绕着**生命周期**、**数据双向绑定**和**模板编译**这三块内容。后面进一步打算围绕这几个部分的实现阅读源码。
-
 
 
 

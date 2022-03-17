@@ -8,26 +8,29 @@ const handleArticleList = function(articleList) {
     const content = list[i].content.toString()
     const number = content.length
     const time = Math.floor(number / 150)
-    const date = list[i].date
-    const dateStr = date.toLocaleDateString().replace('/', '-').replace('/', '-')
+    const date = handleDate(list[i].date)
     
     list[i].readTime = `${number} 字约 ${time} 分钟`
-    list[i].date = dateStr
+    list[i].date = date
     list[i].content = content
   }
 
   return list
 }
 
+const handleDate = function (date) {
+  const arr = date.toLocaleDateString().split('/')
+  return arr.join('-')
+}
+
 const handleArticle = function(article) {
   const content = article.content.toString()
   const number = article.content.length
   const time = Math.floor(number / 150)
-  const date = article.date
-  const dateStr = date.toLocaleDateString().replace('/', '-').replace('/', '-')
+  const date = handleDate(article.date)
   
   article.readTime = `${number} 字约 ${time} 分钟`
-  article.date = dateStr
+  article.date = date
   article.content = marked.parse(content)
 
   return article
@@ -43,12 +46,11 @@ const handleArchivesList = function(articleList) {
     const content = list[i].content.toString()
     const number = content.length
     const time = Math.floor(number / 150)
-    const date = list[i].date
-    const dateStr = date.toLocaleDateString().replace('/', '-').replace('/', '-')
+    const date = handleDate(list[i].date)
     
     list[i].content = content
     list[i].readTime = `${number} 字约 ${time} 分钟`
-    list[i].date = dateStr
+    list[i].date = date
 
     if(map.has(year)) {
       map.get(year).push(list[i])

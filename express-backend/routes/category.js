@@ -26,7 +26,7 @@ router.get('/categoryList', function(req, res, next) {
 // GET article list by category
 router.get('/:category', function (req, res) {
   const category = req.params.category
-  const searchSql = 'SELECT * FROM articles WHERE categories = ' + '\'' + category + '\''
+  const searchSql = 'SELECT * FROM articles WHERE categories = ' + '\'' + category + '\' ORDER BY date DESC'
 
   connection.query(searchSql, function (err, result) {
     if(err) {

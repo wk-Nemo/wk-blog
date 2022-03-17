@@ -5,7 +5,8 @@
   "scripts": {
     "start": "node ./bin/www",
     "dev": "node-dev ./bin/www",
-    "forever": "forever start ./bin/www"
+    "forever": "forever start ./bin/www",
+    "stop": "forever stop ./bin/www"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
