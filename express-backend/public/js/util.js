@@ -5,20 +5,22 @@ const handleArticleList = function(articleList) {
   const listLen = list.length
 
   for (let i = 0; i < listLen; i++) {
-    const number = list[i].content.length
+    const content = list[i].content.toString()
+    const number = content.length
     const time = Math.floor(number / 150)
     const date = list[i].date
     const dateStr = date.toLocaleDateString().replace('/', '-').replace('/', '-')
     
     list[i].readTime = `${number} 字约 ${time} 分钟`
     list[i].date = dateStr
+    list[i].content = content
   }
 
   return list
 }
 
 const handleArticle = function(article) {
-  const content = article.content
+  const content = article.content.toString()
   const number = article.content.length
   const time = Math.floor(number / 150)
   const date = article.date
@@ -38,11 +40,13 @@ const handleArchivesList = function(articleList) {
 
   for (let i = 0; i < listLen; i++) {
     const year = list[i].date.getFullYear()
-    const number = list[i].content.length
+    const content = list[i].content.toString()
+    const number = content.length
     const time = Math.floor(number / 150)
     const date = list[i].date
     const dateStr = date.toLocaleDateString().replace('/', '-').replace('/', '-')
     
+    list[i].content = content
     list[i].readTime = `${number} 字约 ${time} 分钟`
     list[i].date = dateStr
 

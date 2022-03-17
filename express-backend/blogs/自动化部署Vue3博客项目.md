@@ -62,7 +62,7 @@ GitHub Actions 是 GitHub 推出的一款持续集成（CI/CD）服务，它给�
 - uses：选择任务步骤中一部分运行的操作。其实就是步骤使用的`actions`，可以是一个或多个
 
 
-**action** （动作）：每个 step 可以依次执行一个或多个命令（action）。因为很多操作在不同项目中都是类似的，所以 GitHub 把 action 设计为一个独立的脚本文件，可以存放到代码仓库里，让其他开发者使用。所以在实际的使用中，可以直接使用别人写好的 action 而不必所有的都自己写。GitHub也为此做了一个[marketplace](https://link.juejin.cn?target=https%3A%2F%2Fgithub.com%2Fmarketplace%3Ftype%3Dactions "https://github.com/marketplace?type=actions")，这里就是action的官方市场。
+**action** （动作）：每个 step 可以依次执行一个或多个命令（action）。因为很多操作在不同项目中都是类似的，所以 GitHub 把 action 设计为一个独立的脚本文件，可以存放到代码仓库里，让其他开发者使用。所以在实际的使用中，可以直接使用别人写好的 action 而不必所有的都自己写。GitHub也为此做了一个[marketplace](https://github.com/marketplace?type=actions)，这里就是action的官方市场。
 
 
 ## 2 Github Actions 小实验
