@@ -79,6 +79,6 @@ jobs:
           connect_timeout: 10s
           script: |
             cd /www/wk-blog/backend
-            forever start ./bin/www
+            pm2 start ./bin/www
 
            
