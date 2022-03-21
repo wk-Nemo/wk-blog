@@ -203,7 +203,7 @@ async function handleData() {
 
 在进行业务开发时，经常会忽略一些代码健壮性考虑的地方。我们可以使用现有的工具库提升代码健壮性，同时也可以让开发者更关注于业务逻辑的开发。这里推荐的工具库是 lodash。
 
->  文档传送门：[Lodash中文文档](https://www.lodashjs.com/docs/lodash.get)
+> 文档传送门：[Lodash中文文档](https://www.lodashjs.com/docs/lodash.get)
 
 **一、取 object 值**
 
@@ -226,22 +226,3 @@ _.get(object, path, [defaultValue])
 **返回值：**
 
 返回解析的值。
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
