@@ -2,7 +2,7 @@
 title: js代码质量——健壮性
 date: 2022-03-21 13:40:38
 categories: JavaScript
-imgSrc: https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fdingyue.ws.126.net%2F2020%2F0614%2Fbc9bb44ep00qbw7zv0061c000zt00plc.png&refer=http%3A%2F%2Fdingyue.ws.126.net&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1650426335&t=48153ed46627f80e9cd2ff67a9068c66
+imgSrc: https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/e1c95906f0134db981b34346ddb0429d~tplv-k3u1fbpfcp-watermark.image?
 introduce: 对于初入职场的我们，最重要的就是学习如何写出高质量的 js 代码。学习的途径也很简单，多看，多写，多总结，这篇博客就是我的第一篇总结。
 ---
 
