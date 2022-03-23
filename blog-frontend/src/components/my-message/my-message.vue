@@ -26,9 +26,6 @@
 </template>
 
 <script>
-// import getArticles from '@/server/getArticles'
-// import getCategories from '@/server/getCategories'
-
 export default {
   name: 'my-message',
   data () {
@@ -70,12 +67,6 @@ export default {
         }
       ]
     }
-  },
-  async created () {
-    // this.categoriesList = await getCategories()
-    // this.routerOptions[1].number = this.categoriesList.length
-    // this.articleList = await getArticles()
-    // this.routerOptions[0].number = this.articleList.length
   }
 }
 </script>
