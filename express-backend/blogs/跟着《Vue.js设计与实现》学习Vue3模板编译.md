@@ -6,11 +6,11 @@ imgSrc: https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/1a5b8f5465bb45fb86ebdb
 introduce: Vue 的模版和 JSX 都属于特定领域的特定语言，它们的实现难度属于中低级别，只要掌握几本的编译技术理论即可以实现这些功能。
 ---
 
-![CD2FBF3CCBF00D968BB051266B38C06C.jpg](https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/1a5b8f5465bb45fb86ebdbdaf2423e01~tplv-k3u1fbpfcp-watermark.image?)
-
 ## 0 写在前面
 
 前段时间加入的前端讨论群和关注的一些公众号被《Vue.js设计与实现》刷屏，抱着好奇的心态买了一本回来学习。之前学习 Vue2 时就对模板编译这一块不是很理解，于是乎书到手就开始跟着书去学这一部分，并总结了这篇博客。有很多地方写的不是很详细，只是方便大家了解整体的流程，详细内容还是强烈推荐大家去看原著。
+
+![CD2FBF3CCBF00D968BB051266B38C06C.jpg](https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/1a5b8f5465bb45fb86ebdbdaf2423e01~tplv-k3u1fbpfcp-watermark.image?)
 
 ## 1 虚拟DOM
 

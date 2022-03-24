@@ -91,7 +91,7 @@ function parseMDSync(path) {
             console.log(articleTitle, ' [INSERT ERROR] - ', err.message)
             return
         }
-        console.log('[SUCCESS]: read blogs')
+        console.log('[SUCCESS]: read blogs：', articleTitle)
     })
 }
 
