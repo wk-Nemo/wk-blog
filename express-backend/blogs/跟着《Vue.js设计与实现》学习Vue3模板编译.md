@@ -1,6 +1,6 @@
 ---
 title: 跟着《Vue.js设计与实现》学习Vue3模板编译
-date: 2021-3-24 21:19:29
+date: 2022-3-24 21:19:29
 categories: Vue
 imgSrc: https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/1a5b8f5465bb45fb86ebdbdaf2423e01~tplv-k3u1fbpfcp-watermark.image?
 introduce: Vue 的模版和 JSX 都属于特定领域的特定语言，它们的实现难度属于中低级别，只要掌握几本的编译技术理论即可以实现这些功能。
