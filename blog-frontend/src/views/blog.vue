@@ -2,7 +2,7 @@
   <div class="blog animate__animated animate__fadeIn" :class="{'dark': darkMode}">
     <div class="blog-header">
       <div class="lite-header">
-        <img class="avatar" src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3390826808,1281238612&fm=26&gp=0.jpg" alt="">
+        <img class="avatar" src="https://p26-passport.byteacctimg.com/img/user-avatar/a0d10583b3f81abf84f9a119df81d5bf~300x300.image" alt="">
         <p class="author">TortoiseWu</p>
         <p class="description">Keep Learning! Keep Coding! Keep Running!</p>
         <div class="back"></div>

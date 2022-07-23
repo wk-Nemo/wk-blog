@@ -3,7 +3,7 @@
     <div class="my-message-content">
       <div class="header">
         <div class="img-wrapper">
-          <img src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3390826808,1281238612&fm=26&gp=0.jpg" class="header-img">
+          <img src="https://p26-passport.byteacctimg.com/img/user-avatar/a0d10583b3f81abf84f9a119df81d5bf~300x300.image" class="header-img">
         </div>
         <a href="" class="name">KuiWu</a>
         <p class="signature">努力做好每一件事</p>

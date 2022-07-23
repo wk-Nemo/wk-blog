@@ -168,7 +168,9 @@ function getMsg(data) {
 function getData(str, start) {
     let end = start + 1
     for (let i = end; i < str.length; i++) {
-        if (str[i] === '\n') {
+        // windows是CRLF换行，换行结尾是/r/n
+        // linux是LF换行，换行结尾是/n
+        if (str[i] === '\n' || str[i] === '\r') {
             end = i
             break;
         }
