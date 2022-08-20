@@ -25,7 +25,7 @@ const handleArticleList = function(articleList) {
   for (let i = 0; i < listLen; i++) {
     const content = list[i].content.toString()
     const number = content.length
-    const time = Math.floor(number / 150)
+    const time = Math.floor(number / 700)
     const date = handleDate(list[i].date)
     
     list[i].readTime = `${number} 字约 ${time} 分钟`
