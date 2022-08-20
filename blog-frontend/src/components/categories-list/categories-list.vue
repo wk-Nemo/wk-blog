@@ -36,7 +36,6 @@ export default {
   methods: {
     toCategory (category) {
       this.selectedKey = category.key
-      console.log()
       this.$router.push(`/categories/${category.name}`)
     }
   }

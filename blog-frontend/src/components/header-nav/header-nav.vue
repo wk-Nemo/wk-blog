@@ -79,7 +79,7 @@ export default {
         {
           icon: 'icon-wenzhangfenlei',
           title: '分类',
-          to: 'categories',
+          to: '/categories',
           type: 'categories'
         },
         {
@@ -124,16 +124,17 @@ export default {
       }
 
       if (typeList.includes(type)) {
-        console.log(type)
         this.changeType(type)
       }
     },
     changeType (type) {
       this.$store.commit('setType', type)
     },
+    // 该功能暂时下线，等待重构css
     changeMode () {
-      const mode = this.$store.state.mode
-      this.$store.commit('setMode', !mode)
+      return 0
+      // const mode = this.$store.state.mode
+      // this.$store.commit('setMode', !mode)
     }
   },
   computed: {

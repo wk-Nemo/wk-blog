@@ -8,6 +8,7 @@ import baseUrl from '@/assets/util/path'
 import axios from 'axios'
 import 'animate.css'
 import '@/assets/iconfont/iconfont.css'
+import 'highlight.js/styles/default.css'
 
 axios.defaults.baseURL = baseUrl
 

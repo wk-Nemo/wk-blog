@@ -59,8 +59,12 @@ export default {
       const fromId = from.params.id
 
       if (fromId !== toId) {
-        const data = await getArticle(toId)
-        this.blog = data
+        try {
+          const data = await getArticle(toId)
+          this.blog = data
+        } catch (err) {
+          alert(err)
+        }
       }
     }
   },
@@ -83,7 +87,7 @@ export default {
 <style lang="scss" scoped>
 .blog {
   // background: url('https://heskeybaozi.github.io/static/images/miku.jpg') 50% center / cover no-repeat fixed rgb(255, 255, 255);
-  background: url('../assets/img/blog-background-light.jpeg') 50% center / cover no-repeat fixed rgb(255, 255, 255);
+  background: url('../assets/img/background-light.jpeg') 50% center / cover no-repeat fixed rgb(255, 255, 255);
   display: flex;
   flex-flow: column nowrap;
   min-height: 100vh;
@@ -133,7 +137,7 @@ export default {
         z-index: -1;
         content: "";
         filter: blur(30px);
-        background: url('../assets/img/blog-background-light.jpeg') 50% center / cover no-repeat fixed rgb(255, 255, 255);
+        background: url('../assets/img/background-light.jpeg') 50% center / cover no-repeat fixed rgb(255, 255, 255);
         height: 100%;
         width: 100%;
       }
@@ -216,7 +220,7 @@ export default {
         z-index: -1;
         content: "";
         filter: blur(30px);
-        background: url('../assets/img/blog-background-light.jpeg') 50% center / cover no-repeat fixed rgb(255, 255, 255);
+        background: url('../assets/img/background-light.jpeg') 50% center / cover no-repeat fixed rgb(255, 255, 255);
         height: 100%;
         width: 100%;
       }

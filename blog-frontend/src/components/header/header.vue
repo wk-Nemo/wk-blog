@@ -1,5 +1,5 @@
 <template>
-  <div class="header animate__animated animate__fadeIn" :class="{ 'dark': darkMode, 'orther-type': !homeType }">
+  <div class="header animate__animated animate__fadeIn" :class="{ 'dark': darkMode }">
     <div class="header-banner">
       <div class="header-banner-info" v-if="homeType">
         <div class="header-banner-info-title animate__animated animate__fadeIn animate__delay">
@@ -53,7 +53,7 @@ export default {
   width: 100%;
   font-size: 18px;
   background-color: #2d2e30;
-  height: 100vh;
+  height: 50vh;
   .header-banner {
     position: relative;
     z-index: 0;
@@ -96,10 +96,6 @@ export default {
     height: 100%;
     background-color: rgba(0,0,0,0.25);
   }
-}
-
-.orther-type {
-  height: 50vh;
 }
 
 .dark {

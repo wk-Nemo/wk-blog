@@ -1,6 +1,6 @@
 {
   "name": "wk-blog",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
@@ -12,6 +12,7 @@
     "axios": "^0.24.0",
     "core-js": "^3.6.5",
     "github-markdown-css": "^5.1.0",
+    "highlight.js": "^11.6.0",
     "marked": "^4.0.8",
     "node-sass": "^5.0.0",
     "sass-loader": "^10.1.0",

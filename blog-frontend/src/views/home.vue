@@ -2,7 +2,8 @@
   <div class="home" :class="{'dark': darkMode}">
     <Header :type="type" />
     <div class="container animate__animated animate__fadeIn">
-      <my-message></my-message>
+      <!-- 下线个人信息 -->
+      <!-- <my-message></my-message> -->
       <router-view></router-view>
     </div>
   </div>
@@ -10,15 +11,14 @@
 
 <script>
 import Header from '@/components/header/header'
-import MyMessage from '@/components/my-message/my-message'
+// import MyMessage from '@/components/my-message/my-message'
 import getArticleList from '@/server/getArticleList'
 import getCategoryList from '@/server/getCategoryList'
 
 export default {
   name: 'home',
   components: {
-    Header,
-    MyMessage
+    Header
   },
   computed: {
     darkMode () {
@@ -51,7 +51,7 @@ export default {
 
 @media (min-width: 1110px) {
   .container {
-    width: 1100px;
+    width: 900px;
   }
 }
 </style>
