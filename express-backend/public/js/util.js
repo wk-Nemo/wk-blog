@@ -48,7 +48,7 @@ const handleDate = function (date) {
 const handleArticle = function(article) {
   const content = article.content.toString()
   const number = article.content.length
-  const time = Math.floor(number / 150)
+  const time = Math.floor(number / 700)
   const date = handleDate(article.date)
   
   article.readTime = `${number} 字约 ${time} 分钟`
@@ -67,7 +67,7 @@ const handleArchivesList = function(articleList) {
     const year = list[i].date.getFullYear()
     const content = list[i].content.toString()
     const number = content.length
-    const time = Math.floor(number / 150)
+    const time = Math.floor(number / 700)
     const date = handleDate(list[i].date)
     
     list[i].content = content
